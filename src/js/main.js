@@ -7,6 +7,18 @@ import { initAPI, fetchNews, searchNews } from './api.js';
 import { renderNews, renderCategories, showLoading, hideLoading } from './components/news.js';
 import { createArticleCard } from './components/ArticleCard.js';
 
+// Importer les systèmes d'optimisation
+import { initGlobalLazyLoading, measureLoadingPerformance } from './utils/LazyLoader.js';
+import { initImageOptimization, initCacheManager } from './utils/ImageOptimizer.js';
+import {
+  initAssetOptimization,
+  measureCoreWebVitals,
+  measureRenderTime,
+  setupHTTPCaching,
+  setupResponseCompression,
+  setupNetworkOptimization
+} from './utils/AssetOptimizer.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -18,18 +30,42 @@ document.addEventListener('DOMContentLoaded', () => {
   initApp();
 });
 
-function initApp() {
-  // Initialiser l'API
-  initAPI();
+async function initApp() {
+  // Mesurer les performances de chargement
+  await measureLoadingPerformance(async () => {
+    // Initialiser les systèmes d'optimisation en parallèle
+    const optimizationPromises = [
+      initGlobalLazyLoading(),
+      initImageOptimization(),
+      initCacheManager(),
+      initAssetOptimization()
+    ];
 
-  // Configurer les écouteurs d'événements
-  setupEventListeners();
+    // Attendre que toutes les optimisations soient initialisées
+    await Promise.allSettled(optimizationPromises);
 
-  // Initialiser les fonctionnalités du header
-  initHeaderFeatures();
+    // Initialiser l'API
+    initAPI();
 
-  // Charger les actualités initiales
-  loadInitialNews();
+    // Configurer les écouteurs d'événements
+    setupEventListeners();
+
+    // Initialiser les fonctionnalités du header
+    initHeaderFeatures();
+
+    // Charger les actualités initiales
+    await loadInitialNews();
+
+    // Initialiser les optimisations réseau
+    setupHTTPCaching();
+    setupResponseCompression();
+    setupNetworkOptimization();
+
+    // Mesurer les Core Web Vitals
+    measureCoreWebVitals();
+
+    console.log('🚀 Application "Les Scoops du Jour" initialisée avec optimisations de performance');
+  });
 }
 
 function initHeaderFeatures() {
