@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - Les Scoops du Jour</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header de démonstration -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Les Scoops du Jour</h1>
+                <p>Design System Demo</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#colors">Couleurs</a></li>
+                    <li><a href="#typography">Typographie</a></li>
+                    <li><a href="#components">Composants</a></li>
+                    <li><a href="#utilities">Utilitaires</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section Couleurs -->
+        <section id="colors" class="mb-3xl">
+            <h2 class="text-3xl font-weight-bold mb-xl text-center">Système de Couleurs</h2>
+
+            <div class="mb-xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Couleurs Principales</h3>
+                <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="p-md border-radius text-center">
+                        <div class="bg-primary p-lg border-radius mb-sm"></div>
+                        <p class="text-sm font-weight-medium">Primary (#FE0202)</p>
+                    </div>
+                    <div class="p-md border-radius text-center">
+                        <div class="bg-secondary p-lg border-radius mb-sm"></div>
+                        <p class="text-sm font-weight-medium">Secondary</p>
+                    </div>
+                    <div class="p-md border-radius text-center">
+                        <div class="bg-success p-lg border-radius mb-sm"></div>
+                        <p class="text-sm font-weight-medium">Success</p>
+                    </div>
+                    <div class="p-md border-radius text-center">
+                        <div class="bg-warning p-lg border-radius mb-sm"></div>
+                        <p class="text-sm font-weight-medium">Warning</p>
+                    </div>
+                    <div class="p-md border-radius text-center">
+                        <div class="bg-error p-lg border-radius mb-sm"></div>
+                        <p class="text-sm font-weight-medium">Error</p>
+                    </div>
+                    <div class="p-md border-radius text-center">
+                        <div class="bg-info p-lg border-radius mb-sm"></div>
+                        <p class="text-sm font-weight-medium">Info</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Nuances de Gris</h3>
+                <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-white p-md border border-radius mb-xs"></div>
+                        <p class="text-xs">White</p>
+                    </div>
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-gray-100 p-md border border-radius mb-xs"></div>
+                        <p class="text-xs">Gray 100</p>
+                    </div>
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-gray-200 p-md border border-radius mb-xs"></div>
+                        <p class="text-xs">Gray 200</p>
+                    </div>
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-gray-300 p-md border border-radius mb-xs"></div>
+                        <p class="text-xs">Gray 300</p>
+                    </div>
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-gray-500 p-md border border-radius mb-xs"></div>
+                        <p class="text-xs">Gray 500</p>
+                    </div>
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-gray-700 p-md border border-radius mb-xs"></div>
+                        <p class="text-xs">Gray 700</p>
+                    </div>
+                    <div class="p-sm border-radius text-center">
+                        <div class="bg-black p-md border border-radius mb-xs"></div>
+                        <p class="text-xs text-white">Black</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Typographie -->
+        <section id="typography" class="mb-3xl">
+            <h2 class="text-3xl font-weight-bold mb-xl text-center">Système Typographique</h2>
+
+            <div class="mb-xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Tailles de Police</h3>
+                <div class="d-flex flex-column" style="gap: 1rem;">
+                    <p class="text-xs">Texte XS (0.75rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-sm">Texte SM (0.875rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-base">Texte Base (1rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-lg">Texte LG (1.125rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-xl">Texte XL (1.25rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-2xl">Texte 2XL (1.5rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-3xl">Texte 3XL (1.875rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-4xl">Texte 4XL (2.25rem) - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-5xl">Texte 5XL (3rem) - Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+
+            <div class="mb-xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Poids de Police</h3>
+                <div class="d-flex flex-column" style="gap: 0.5rem;">
+                    <p class="font-weight-light">Light (300) - Lorem ipsum dolor sit amet.</p>
+                    <p class="font-weight-regular">Regular (400) - Lorem ipsum dolor sit amet.</p>
+                    <p class="font-weight-medium">Medium (500) - Lorem ipsum dolor sit amet.</p>
+                    <p class="font-weight-semibold">Semibold (600) - Lorem ipsum dolor sit amet.</p>
+                    <p class="font-weight-bold">Bold (700) - Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+
+            <div class="mb-xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Couleurs de Texte</h3>
+                <div class="d-flex flex-column" style="gap: 0.5rem;">
+                    <p class="text-primary">Texte Primary - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-secondary">Texte Secondary - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-tertiary">Texte Tertiary - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-muted">Texte Muted - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-success">Texte Success - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-warning">Texte Warning - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-error">Texte Error - Lorem ipsum dolor sit amet.</p>
+                    <p class="text-info">Texte Info - Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Composants -->
+        <section id="components" class="mb-3xl">
+            <h2 class="text-3xl font-weight-bold mb-xl text-center">Composants Réutilisables</h2>
+
+            <!-- Boutons -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Boutons</h3>
+                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                    <button class="btn btn-primary">Bouton Primary</button>
+                    <button class="btn btn-secondary">Bouton Secondary</button>
+                    <button class="btn btn-outline">Bouton Outline</button>
+                    <button class="btn btn-primary" disabled>Bouton Désactivé</button>
+                </div>
+            </div>
+
+            <!-- Cartes -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Cartes</h3>
+                <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-lg font-weight-semibold">Carte Simple</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-secondary">Contenu de la carte avec du texte descriptif.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary">Action</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200/FE0202/FFFFFF?text=Image" alt="Image de démonstration" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h4 class="text-lg font-weight-semibold mb-sm">Carte avec Image</h4>
+                            <p class="text-secondary">Cette carte contient une image et du contenu textuel.</p>
+                            <div class="d-flex justify-between align-center mt-md">
+                                <span class="badge badge-primary">Catégorie</span>
+                                <span class="text-sm text-muted">Il y a 2h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Badges</h3>
+                <div class="d-flex flex-wrap" style="gap: 0.5rem;">
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-secondary">Secondary</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-error">Error</span>
+                    <span class="badge badge-info">Info</span>
+                </div>
+            </div>
+
+            <!-- Formulaire -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Formulaire</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">Nom complet</label>
+                                <input type="text" class="form-control" placeholder="Entrez votre nom">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="votre@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="Votre message..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alertes -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Alertes</h3>
+                <div class="d-flex flex-column" style="gap: 1rem;">
+                    <div class="alert alert-success">
+                        <strong>Succès!</strong> Votre action a été réalisée avec succès.
+                    </div>
+                    <div class="alert alert-warning">
+                        <strong>Attention!</strong> Veuillez vérifier les informations saisies.
+                    </div>
+                    <div class="alert alert-error">
+                        <strong>Erreur!</strong> Une erreur s'est produite lors du traitement.
+                    </div>
+                    <div class="alert alert-info">
+                        <strong>Information!</strong> Voici une information importante.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Modal</h3>
+                <button class="btn btn-primary" onclick="openModal()">Ouvrir Modal</button>
+
+                <div id="demoModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="text-xl font-weight-semibold">Titre du Modal</h3>
+                            <button class="btn btn-outline" onclick="closeModal()">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-secondary mb-md">Contenu du modal avec du texte descriptif.</p>
+                            <p class="text-secondary">Vous pouvez ajouter autant de contenu que nécessaire dans cette section.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-outline" onclick="closeModal()">Annuler</button>
+                            <button class="btn btn-primary" onclick="closeModal()">Confirmer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Pagination</h3>
+                <nav class="pagination">
+                    <a href="#" class="page-link">Précédent</a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">4</a>
+                    <a href="#" class="page-link">5</a>
+                    <a href="#" class="page-link">Suivant</a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Section Utilitaires -->
+        <section id="utilities" class="mb-3xl">
+            <h2 class="text-3xl font-weight-bold mb-xl text-center">Classes Utilitaires</h2>
+
+            <!-- Espacements -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Espacements</h3>
+                <div class="d-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="bg-gray-100 p-md border-radius">
+                        <p class="text-sm font-weight-medium mb-sm">Padding</p>
+                        <div class="d-flex flex-wrap" style="gap: 0.5rem;">
+                            <div class="bg-primary text-white p-xs text-xs text-center">p-xs</div>
+                            <div class="bg-primary text-white p-sm text-xs text-center">p-sm</div>
+                            <div class="bg-primary text-white p-md text-xs text-center">p-md</div>
+                            <div class="bg-primary text-white p-lg text-xs text-center">p-lg</div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 p-md border-radius">
+                        <p class="text-sm font-weight-medium mb-sm">Margin</p>
+                        <div class="d-flex flex-column" style="gap: 0.5rem;">
+                            <div class="bg-secondary text-white p-sm text-xs text-center m-xs">m-xs</div>
+                            <div class="bg-secondary text-white p-sm text-xs text-center m-sm">m-sm</div>
+                            <div class="bg-secondary text-white p-sm text-xs text-center m-md">m-md</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flexbox -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Flexbox</h3>
+                <div class="bg-gray-100 p-lg border-radius mb-md">
+                    <div class="d-flex justify-between align-center mb-md">
+                        <div class="bg-primary text-white p-sm text-xs text-center">Item 1</div>
+                        <div class="bg-primary text-white p-sm text-xs text-center">Item 2</div>
+                        <div class="bg-primary text-white p-sm text-xs text-center">Item 3</div>
+                    </div>
+                    <p class="text-sm text-secondary">justify-between align-center</p>
+                </div>
+            </div>
+
+            <!-- Bordures et Rayons -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Bordures et Rayons</h3>
+                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                    <div class="bg-gray-100 p-md border border-radius">border-radius</div>
+                    <div class="bg-gray-100 p-md border border-radius-sm">border-radius-sm</div>
+                    <div class="bg-gray-100 p-md border border-radius-md">border-radius-md</div>
+                    <div class="bg-gray-100 p-md border border-radius-lg">border-radius-lg</div>
+                    <div class="bg-gray-100 p-md border border-radius-xl">border-radius-xl</div>
+                    <div class="bg-gray-100 p-md border border-radius-full">border-radius-full</div>
+                </div>
+            </div>
+
+            <!-- Ombres -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Ombres</h3>
+                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                    <div class="bg-white p-lg shadow-sm text-center text-sm">shadow-sm</div>
+                    <div class="bg-white p-lg shadow text-center text-sm">shadow</div>
+                    <div class="bg-white p-lg shadow-md text-center text-sm">shadow-md</div>
+                    <div class="bg-white p-lg shadow-lg text-center text-sm">shadow-lg</div>
+                    <div class="bg-white p-lg shadow-xl text-center text-sm">shadow-xl</div>
+                </div>
+            </div>
+
+            <!-- Animations -->
+            <div class="mb-2xl">
+                <h3 class="text-xl font-weight-semibold mb-lg">Animations</h3>
+                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                    <div class="bg-primary text-white p-md text-center animate-fade-in">Fade In</div>
+                    <div class="bg-secondary text-white p-md text-center animate-slide-up">Slide Up</div>
+                    <div class="bg-success text-white p-md text-center animate-bounce">Bounce</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour - Design System Demo</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openModal() {
+            document.getElementById('demoModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('demoModal').classList.remove('show');
+        }
+
+        // Fermer le modal en cliquant en dehors
+        window.onclick = function(event) {
+            const modal = document.getElementById('demoModal');
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>

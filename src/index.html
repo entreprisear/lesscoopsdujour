@@ -14,26 +14,89 @@
     <meta name="author" content="Entreprise AR">
 </head>
 <body>
-    <header class="header">
+    <!-- Breaking News - Fil d'actualité défilant -->
+    <div class="breaking-news">
         <div class="container">
-            <div class="logo">
-                <h1>Les Scoops du Jour</h1>
-                <p>Actualités Béninoises</p>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#accueil" class="active">Accueil</a></li>
-                    <li><a href="#politique">Politique</a></li>
-                    <li><a href="#economie">Économie</a></li>
-                    <li><a href="#culture">Culture</a></li>
-                    <li><a href="#sport">Sport</a></li>
-                </ul>
-            </nav>
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher..." id="search-input">
-                <button id="search-btn">🔍</button>
+            <div class="breaking-news-content">
+                <span>📰 Nouveau gouvernement formé au Bénin • Économie béninoise en croissance • Festival international de Ouidah • Victoire historique du Bénin en Coupe d'Afrique</span>
+                <span>📰 Nouveau gouvernement formé au Bénin • Économie béninoise en croissance • Festival international de Ouidah • Victoire historique du Bénin en Coupe d'Afrique</span>
             </div>
         </div>
+    </div>
+
+    <!-- Header principal -->
+    <header class="header" id="main-header">
+        <div class="header-main">
+            <div class="container">
+                <!-- Logo -->
+                <a href="/" class="logo">
+                    <h1>Les Scoops du Jour</h1>
+                    <p>Actualités Béninoises</p>
+                </a>
+
+                <!-- Navigation desktop -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#accueil" class="active" data-section="accueil">Accueil</a></li>
+                        <li><a href="#politique" data-section="politique">Politique</a></li>
+                        <li><a href="#economie" data-section="economie">Économie</a></li>
+                        <li><a href="#sport" data-section="sport">Sport</a></li>
+                        <li><a href="#culture" data-section="culture">Culture</a></li>
+                        <li><a href="#tech" data-section="tech">Tech</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher des actualités..." id="search-input" autocomplete="off">
+                    <button id="search-btn" aria-label="Rechercher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <!-- Menu hamburger pour mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3>Menu</h3>
+                    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fermer">×</button>
+                </div>
+                <div class="mobile-nav-body">
+                    <ul>
+                        <li><a href="#accueil" class="active" data-section="accueil">🏠 Accueil</a></li>
+                        <li><a href="#politique" data-section="politique">🏛️ Politique</a></li>
+                        <li><a href="#economie" data-section="economie">💰 Économie</a></li>
+                        <li><a href="#sport" data-section="sport">⚽ Sport</a></li>
+                        <li><a href="#culture" data-section="culture">🎭 Culture</a></li>
+                        <li><a href="#tech" data-section="tech">💻 Tech</a></li>
+                    </ul>
+                    <div class="mobile-nav-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Rechercher..." id="mobile-search-input" autocomplete="off">
+                            <button id="mobile-search-btn" aria-label="Rechercher">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main class="main-content">

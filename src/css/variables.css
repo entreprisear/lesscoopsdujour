@@ -1,64 +1,114 @@
 :root {
   /* Couleurs principales */
   --primary-color: #FE0202;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --info-color: #17a2b8;
-  --light-color: #f8f9fa;
-  --dark-color: #343a40;
+  --primary-dark: #E00000;
+  --primary-light: #FF4444;
+
+  /* Couleurs neutres */
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #4A4A4A;
+  --gray-800: #303030;
+  --gray-900: #212121;
+
+  /* Couleurs sémantiques */
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+  --info-color: #2196F3;
 
   /* Couleurs de fond */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-dark: #343a40;
-  --bg-light: #ffffff;
+  --bg-primary: var(--white);
+  --bg-secondary: var(--gray-100);
+  --bg-tertiary: var(--gray-200);
+  --bg-dark: var(--black);
 
   /* Couleurs de texte */
-  --text-primary: #212529;
-  --text-secondary: #6c757d;
-  --text-light: #ffffff;
-  --text-muted: #6c757d;
+  --text-primary: var(--black);
+  --text-secondary: var(--gray-700);
+  --text-tertiary: var(--gray-500);
+  --text-inverse: var(--white);
+  --text-muted: var(--gray-600);
 
   /* Polices */
-  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-secondary: 'Inter', sans-serif;
-  --font-size-base: 16px;
-  --font-size-lg: 1.25rem;
-  --font-size-sm: 0.875rem;
-  --font-size-xs: 0.75rem;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+
+  --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Espacement */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 3rem;
+  /* Tailles de police */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+
+  /* Ligne de hauteur */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Espacements */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
 
   /* Bordures */
-  --border-radius: 0.375rem;
-  --border-radius-lg: 0.5rem;
-  --border-color: #dee2e6;
+  --border-width: 1px;
+  --border-width-2: 2px;
+  --border-width-4: 4px;
+  --border-radius: 4px;
+  --border-radius-sm: 2px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+  --border-radius-2xl: 16px;
+  --border-radius-full: 9999px;
 
   /* Ombres */
-  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   /* Transitions */
-  --transition-fast: 0.15s ease-in-out;
-  --transition-base: 0.3s ease-in-out;
-  --transition-slow: 0.5s ease-in-out;
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
 
   /* Breakpoints */
-  --breakpoint-xs: 320px;
-  --breakpoint-sm: 768px;
-  --breakpoint-md: 1024px;
-  --breakpoint-lg: 1200px;
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --desktop-lg: 1200px;
 }
