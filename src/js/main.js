@@ -40,6 +40,15 @@ import { initUserPreferences } from './components/UserPreferences.js';
 // Importer le système newsletter
 import { initNewsletter } from './components/Newsletter.js';
 
+// Importer le système de partage social
+import { initSocialShare, SocialShare } from './components/SocialShare.js';
+
+// Importer les widgets sociaux
+import { initSocialWidgets } from './components/SocialWidgets.js';
+
+// Importer le gestionnaire Open Graph
+import { initOpenGraphManager } from './utils/OpenGraphManager.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -76,6 +85,17 @@ async function initApp() {
 
     // Initialiser le système newsletter
     initNewsletter(window.storageManager);
+
+    // Initialiser les widgets sociaux
+    initSocialWidgets({
+      twitter: { enabled: true },
+      facebook: { enabled: true },
+      instagram: { enabled: true },
+      youtube: { enabled: true }
+    });
+
+    // Initialiser le gestionnaire Open Graph
+    initOpenGraphManager(window.seoManager);
 
     // Configurer les écouteurs d'événements
     setupEventListeners();
