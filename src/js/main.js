@@ -28,6 +28,9 @@ import { initSEOManager, measureSEOEffectiveness } from './utils/SEOManager.js';
 // Importer le système AMP
 import { initAMPGenerator, setupAutoAMPGeneration } from './utils/AMPGenerator.js';
 
+// Importer l'API Mock robuste
+import { initMockAPI, fetchArticles, fetchArticle, searchArticles, rateArticle } from './utils/MockAPI.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -53,8 +56,8 @@ async function initApp() {
     // Attendre que toutes les optimisations soient initialisées
     await Promise.allSettled(optimizationPromises);
 
-    // Initialiser l'API
-    initAPI();
+    // Initialiser l'API Mock robuste
+    initMockAPI();
 
     // Configurer les écouteurs d'événements
     setupEventListeners();
