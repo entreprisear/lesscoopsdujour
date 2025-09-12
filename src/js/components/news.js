@@ -1,12 +1,29 @@
 // Les Scoops du Jour - News Components
 
+import { ArticleCard, createArticleCard } from './ArticleCard.js';
+
+// Store card instances for cleanup
+let cardInstances = [];
+
 // Fonction pour afficher le chargement
 export function showLoading() {
   const newsContainer = document.getElementById('news-container');
+
+  // Clear existing cards
+  cleanupCards();
+
+  // Show skeletons
+  const skeletonHTML = Array(6).fill(null).map(() =>
+    ArticleCard.createSkeleton('medium').outerHTML
+  ).join('');
+
   newsContainer.innerHTML = `
-    <div class="loading-container">
-      <div class="loading"></div>
-      <p>Chargement des actualités...</p>
+    <div class="news-header">
+      <h2>Actualités récentes</h2>
+      <p>Chargement...</p>
+    </div>
+    <div class="news-grid">
+      ${skeletonHTML}
     </div>
   `;
 }
@@ -20,6 +37,9 @@ export function hideLoading() {
 export function renderNews(newsData) {
   const newsContainer = document.getElementById('news-container');
 
+  // Clear existing cards
+  cleanupCards();
+
   if (!newsData || !newsData.articles || newsData.articles.length === 0) {
     newsContainer.innerHTML = `
       <div class="no-news">
@@ -30,7 +50,17 @@ export function renderNews(newsData) {
     return;
   }
 
-  const newsHTML = newsData.articles.map(article => createNewsCard(article)).join('');
+  // Create card instances
+  const cards = newsData.articles.map(article => {
+    const card = createArticleCard(article, 'medium', {
+      showRating: true,
+      showShare: true,
+      showBookmark: true,
+      lazyLoad: true
+    });
+    cardInstances.push(card);
+    return card.render();
+  });
 
   newsContainer.innerHTML = `
     <div class="news-header">
@@ -38,39 +68,13 @@ export function renderNews(newsData) {
       <p>${newsData.totalResults} articles trouvés</p>
     </div>
     <div class="news-grid">
-      ${newsHTML}
+      ${cards.map(card => card.outerHTML).join('')}
     </div>
     ${createPagination(newsData)}
   `;
-}
 
-// Fonction pour créer une carte d'actualité
-function createNewsCard(article) {
-  const rating = article.rating || 4.0;
-  const stars = createStarRating(rating);
-
-  return `
-    <article class="news-card" data-id="${article.id}">
-      <div class="news-image">
-        <img src="${article.urlToImage}" alt="${article.title}" loading="lazy">
-        <div class="news-category">
-          <span class="badge badge-${getCategoryColor(article.category)}">${article.category}</span>
-        </div>
-      </div>
-      <div class="news-content">
-        <h3>${article.title}</h3>
-        <p>${article.description || 'Aucune description disponible'}</p>
-        <div class="news-meta">
-          <span class="news-author">Par ${article.author}</span>
-          <span class="news-date">${article.publishedAt}</span>
-        </div>
-        <div class="news-rating">
-          ${stars}
-          <span class="rating-score">${rating.toFixed(1)}</span>
-        </div>
-      </div>
-    </article>
-  `;
+  // Re-attach card instances to DOM elements
+  attachCardInstances();
 }
 
 // Fonction pour créer les étoiles de notation
@@ -278,6 +282,28 @@ export function formatDate(dateString) {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
+  });
+}
+
+// Helper functions for card management
+function cleanupCards() {
+  cardInstances.forEach(card => {
+    card.destroy();
+  });
+  cardInstances = [];
+}
+
+function attachCardInstances() {
+  // Re-attach event listeners to DOM elements after HTML update
+  const newsContainer = document.getElementById('news-container');
+  const cardElements = newsContainer.querySelectorAll('.article-card');
+
+  cardElements.forEach((element, index) => {
+    if (cardInstances[index]) {
+      // Update the element reference in the card instance
+      cardInstances[index].element = element;
+      cardInstances[index].attachEventListeners();
+    }
   });
 }
 

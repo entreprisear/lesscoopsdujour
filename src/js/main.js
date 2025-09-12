@@ -5,6 +5,7 @@ import '../css/components.css';
 import '../css/responsive.css';
 import { initAPI, fetchNews, searchNews } from './api.js';
 import { renderNews, renderCategories, showLoading, hideLoading } from './components/news.js';
+import { createArticleCard } from './components/ArticleCard.js';
 
 // État de l'application
 let currentPage = 1;
@@ -674,6 +675,88 @@ function initHomePageFeatures() {
   initScrollAnimations();
   initLazyLoading();
   initPerformanceOptimizations();
+  initArticleCards();
+}
+
+// Initialize ArticleCard components for hero and sidebar
+function initArticleCards() {
+  // Hero article (large variant)
+  const heroArticle = {
+    id: 'hero-1',
+    title: 'Nouveau gouvernement formé : Patrice Talon nomme ses ministres',
+    description: 'Le président Patrice Talon a annoncé la composition de son nouveau gouvernement après plusieurs semaines de consultations. Découvrez les principales nominations et les défis qui attendent l\'équipe gouvernementale.',
+    urlToImage: 'https://via.placeholder.com/800x500/FE0202/FFFFFF?text=Gouvernement+Talon',
+    publishedAt: '12 sept. 2025',
+    source: 'Les Scoops du Jour',
+    category: 'politique',
+    author: 'Marie KPOGNON',
+    rating: 4.8
+  };
+
+  const heroCard = createArticleCard(heroArticle, 'large', {
+    showRating: true,
+    showShare: true,
+    showBookmark: false,
+    lazyLoad: true
+  });
+
+  const heroContainer = document.querySelector('.hero-article');
+  if (heroContainer) {
+    heroContainer.parentNode.replaceChild(heroCard.render(), heroContainer);
+  }
+
+  // Popular articles in sidebar (small variant)
+  const popularArticles = [
+    {
+      id: 'popular-1',
+      title: 'Nouveau gouvernement : Les premières décisions',
+      category: 'politique',
+      views: 2450,
+      rank: 1
+    },
+    {
+      id: 'popular-2',
+      title: 'Économie : Croissance record au Bénin',
+      category: 'economie',
+      views: 1890,
+      rank: 2
+    },
+    {
+      id: 'popular-3',
+      title: 'Festival d\'Ouidah : Bilan positif',
+      category: 'culture',
+      views: 1650,
+      rank: 3
+    },
+    {
+      id: 'popular-4',
+      title: 'Équipe nationale : Préparation CAN 2025',
+      category: 'sport',
+      views: 1420,
+      rank: 4
+    },
+    {
+      id: 'popular-5',
+      title: 'Intelligence artificielle : Nouveau centre',
+      category: 'tech',
+      views: 1380,
+      rank: 5
+    }
+  ];
+
+  const popularContainer = document.querySelector('.popular-articles');
+  if (popularContainer) {
+    popularContainer.innerHTML = '';
+    popularArticles.forEach(article => {
+      const card = createArticleCard(article, 'small', {
+        showRating: false,
+        showShare: false,
+        showBookmark: true,
+        lazyLoad: false
+      });
+      popularContainer.appendChild(card.render());
+    });
+  }
 }
 
 // Ajouter l'initialisation dans la fonction principale
