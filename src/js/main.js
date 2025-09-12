@@ -25,6 +25,9 @@ import { initPWACore } from './utils/PWA.js';
 // Importer le système SEO
 import { initSEOManager, measureSEOEffectiveness } from './utils/SEOManager.js';
 
+// Importer le système AMP
+import { initAMPGenerator, setupAutoAMPGeneration } from './utils/AMPGenerator.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -81,7 +84,11 @@ async function initApp() {
       measureSEOEffectiveness();
     }, 2000);
 
-    console.log('🚀 Application "Les Scoops du Jour" initialisée avec optimisations de performance, PWA et SEO');
+    // Initialiser le système AMP
+    initAMPGenerator();
+    setupAutoAMPGeneration();
+
+    console.log('🚀 Application "Les Scoops du Jour" initialisée avec optimisations de performance, PWA, SEO et AMP');
   });
 }
 

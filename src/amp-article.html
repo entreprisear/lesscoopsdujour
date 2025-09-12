@@ -1,0 +1,576 @@
+<!doctype html>
+<html ⚡ lang="fr">
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <!-- AMP Components -->
+  <script async custom-element="amp-img" src="https://cdn.ampproject.org/v0/amp-img-0.1.js"></script>
+  <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+  <script async custom-element="amp-timeago" src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"></script>
+
+  <title>{{article.title}} - Les Scoops du Jour</title>
+  <link rel="canonical" href="{{article.canonicalUrl}}">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="{{article.excerpt}}">
+  <meta name="keywords" content="{{article.tags}}">
+  <meta name="author" content="{{article.author}}">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{article.title}}">
+  <meta property="og:description" content="{{article.excerpt}}">
+  <meta property="og:image" content="{{article.image}}">
+  <meta property="og:url" content="{{article.canonicalUrl}}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Les Scoops du Jour">
+  <meta property="article:published_time" content="{{article.publishedAt}}">
+  <meta property="article:modified_time" content="{{article.updatedAt}}">
+  <meta property="article:author" content="{{article.author}}">
+  <meta property="article:section" content="{{article.category}}">
+  <meta property="article:tag" content="{{article.tags}}">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@scoopsbenin">
+  <meta name="twitter:title" content="{{article.title}}">
+  <meta name="twitter:description" content="{{article.excerpt}}">
+  <meta name="twitter:image" content="{{article.image}}">
+
+  <!-- AMP Boilerplate -->
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+  <!-- AMP Custom CSS -->
+  <style amp-custom>
+    /* Variables CSS */
+    :root {
+      --primary-color: #FE0202;
+      --secondary-color: #4CAF50;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --background: #fff;
+      --border-color: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Reset et base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--background);
+    }
+
+    /* Header AMP */
+    .amp-header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #b71c1c 100%);
+      color: white;
+      padding: 1rem;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .amp-header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .amp-logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .amp-menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Sidebar navigation */
+    amp-sidebar {
+      background: white;
+      width: 280px;
+    }
+
+    .amp-nav {
+      padding: 1rem;
+    }
+
+    .amp-nav ul {
+      list-style: none;
+    }
+
+    .amp-nav a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 0.25rem;
+    }
+
+    .amp-nav a:hover {
+      background: #f5f5f5;
+    }
+
+    /* Article container */
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    /* Article header */
+    .article-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .article-title {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .article-date {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Article image */
+    .article-image {
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Article content */
+    .article-content {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .article-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem 0;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 1rem 0;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--primary-color);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 1.5rem 0;
+      padding-left: 2rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Article actions */
+    .article-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .article-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .article-share {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Newsletter */
+    .newsletter-section {
+      background: #f8f9fa;
+      padding: 2rem 1rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .newsletter-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-submit {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    /* Related articles */
+    .related-articles {
+      margin: 3rem 0;
+    }
+
+    .related-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .related-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .related-image {
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .related-content {
+      padding: 1rem;
+    }
+
+    .related-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .related-meta {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    .amp-footer {
+      background: #333;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .footer-copyright {
+      font-size: 0.875rem;
+      color: #999;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .article-title {
+        font-size: 1.5rem;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .article-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* AMP validation fixes */
+    .amp-form-submit-success {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    .amp-form-submit-error {
+      background: #f44336;
+      color: white;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="amp-header">
+    <div class="amp-header-content">
+      <a href="/" class="amp-logo">Les Scoops du Jour</a>
+      <button on="tap:sidebar.toggle" class="amp-menu-btn">☰</button>
+    </div>
+  </header>
+
+  <!-- Sidebar Navigation -->
+  <amp-sidebar id="sidebar" layout="nodisplay" side="right">
+    <div class="amp-nav">
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/category/politique">Politique</a></li>
+        <li><a href="/category/economie">Économie</a></li>
+        <li><a href="/category/sport">Sport</a></li>
+        <li><a href="/category/culture">Culture</a></li>
+        <li><a href="/category/tech">Tech</a></li>
+        <li><a href="/forum">Forum</a></li>
+        <li><a href="/search">Recherche</a></li>
+      </ul>
+    </div>
+  </amp-sidebar>
+
+  <!-- Article Content -->
+  <main class="article-container">
+    <!-- Article Header -->
+    <header class="article-header">
+      <span class="article-category">{{article.category}}</span>
+      <h1 class="article-title">{{article.title}}</h1>
+      <div class="article-meta">
+        <div class="article-author">
+          <amp-img src="{{article.authorAvatar}}" width="32" height="32" layout="fixed" class="author-avatar" alt="{{article.author}}"></amp-img>
+          <span>{{article.author}}</span>
+        </div>
+        <div class="article-date">
+          <span>📅</span>
+          <amp-timeago datetime="{{article.publishedAt}}" layout="text">il y a quelques instants</amp-timeago>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Image -->
+    <div class="article-image">
+      <amp-img src="{{article.image}}"
+               width="800"
+               height="450"
+               layout="responsive"
+               alt="{{article.title}}"
+               attribution="{{article.imageCaption}}"></amp-img>
+    </div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+      {{{article.content}}}
+    </article>
+
+    <!-- Article Actions -->
+    <div class="article-actions">
+      <div class="article-stats">
+        <span>👁️ {{article.views}} vues</span>
+        <span>❤️ {{article.likes}} likes</span>
+      </div>
+      <div class="article-share">
+        <amp-social-share type="facebook" data-param-url="{{article.canonicalUrl}}"></amp-social-share>
+        <amp-social-share type="twitter" data-param-url="{{article.canonicalUrl}}" data-param-text="{{article.title}}"></amp-social-share>
+        <amp-social-share type="whatsapp" data-param-url="{{article.canonicalUrl}}" data-param-text="{{article.title}}"></amp-social-share>
+        <amp-social-share type="email" data-param-url="{{article.canonicalUrl}}" data-param-subject="{{article.title}}"></amp-social-share>
+      </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <h3 class="newsletter-title">Restez informé</h3>
+      <p class="newsletter-subtitle">Recevez les dernières actualités directement dans votre boîte mail</p>
+      <form method="post" action-xhr="/api/newsletter" target="_top" class="newsletter-form" amp-form>
+        <input type="email" name="email" placeholder="Votre email" required class="newsletter-input">
+        <button type="submit" class="newsletter-submit">S'inscrire</button>
+        <div submit-success>
+          <div class="amp-form-submit-success">Merci ! Vous êtes maintenant inscrit.</div>
+        </div>
+        <div submit-error>
+          <div class="amp-form-submit-error">Erreur lors de l'inscription. Veuillez réessayer.</div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+      <h2 class="related-title">Articles similaires</h2>
+      <div class="related-grid">
+        {{#each relatedArticles}}
+        <a href="/amp/article/{{this.id}}" class="related-card">
+          <amp-img src="{{this.image}}" width="250" height="150" layout="responsive" class="related-image" alt="{{this.title}}"></amp-img>
+          <div class="related-content">
+            <h3 class="related-card-title">{{this.title}}</h3>
+            <div class="related-meta">{{this.category}} • <amp-timeago datetime="{{this.publishedAt}}" layout="text">il y a quelques instants</amp-timeago></div>
+          </div>
+        </a>
+        {{/each}}
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="amp-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="/" class="footer-link">Accueil</a>
+        <a href="/about" class="footer-link">À propos</a>
+        <a href="/contact" class="footer-link">Contact</a>
+        <a href="/privacy" class="footer-link">Confidentialité</a>
+        <a href="/terms" class="footer-link">Conditions</a>
+      </div>
+      <div class="footer-copyright">
+        © 2025 Les Scoops du Jour. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <amp-analytics type="googleanalytics">
+    <script type="application/json">
+    {
+      "vars": {
+        "account": "UA-XXXXX-Y"
+      },
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "pageview"
+        }
+      }
+    }
+    </script>
+  </amp-analytics>
+</body>
+</html>
