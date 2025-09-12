@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmez votre abonnement - Les Scoops du Jour</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .email-header {
+      background: linear-gradient(135deg, #FE0202 0%, #b71c1c 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .email-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .email-content {
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .confirmation-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    .confirmation-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #FE0202;
+      margin-bottom: 20px;
+    }
+
+    .confirmation-text {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .confirmation-button {
+      display: inline-block;
+      background: #FE0202;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .confirmation-button:hover {
+      background: #cc0000;
+    }
+
+    .confirmation-details {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .detail-value {
+      color: #666;
+    }
+
+    .help-text {
+      font-size: 14px;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    .email-footer {
+      background: #333;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+      }
+
+      .email-header {
+        padding: 30px 20px;
+      }
+
+      .email-header h1 {
+        font-size: 24px;
+      }
+
+      .email-content {
+        padding: 30px 20px;
+      }
+
+      .confirmation-icon {
+        font-size: 48px;
+      }
+
+      .confirmation-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <h1>📰 Les Scoops du Jour</h1>
+    </div>
+
+    <div class="email-content">
+      <div class="confirmation-icon">✅</div>
+
+      <h2 class="confirmation-title">Confirmez votre abonnement</h2>
+
+      <p class="confirmation-text">
+        Merci de votre intérêt pour Les Scoops du Jour ! Pour finaliser votre inscription
+        à notre newsletter quotidienne, veuillez cliquer sur le bouton ci-dessous.
+      </p>
+
+      <a href="{{confirmationUrl}}" class="confirmation-button">
+        Confirmer mon abonnement
+      </a>
+
+      <div class="confirmation-details">
+        <div class="detail-item">
+          <span class="detail-label">Adresse email :</span>
+          <span class="detail-value">{{subscriberEmail}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Fréquence :</span>
+          <span class="detail-value">{{frequency}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Catégories :</span>
+          <span class="detail-value">{{categories}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Format :</span>
+          <span class="detail-value">{{format}}</span>
+        </div>
+      </div>
+
+      <p class="help-text">
+        Si le bouton ne fonctionne pas, copiez et collez ce lien dans votre navigateur :<br>
+        <a href="{{confirmationUrl}}" style="color: #FE0202; word-break: break-all;">{{confirmationUrl}}</a>
+      </p>
+
+      <p class="help-text">
+        Vous n'avez pas demandé cet abonnement ?
+        <a href="{{unsubscribeUrl}}" style="color: #FE0202;">Cliquez ici pour vous désabonner</a>
+      </p>
+    </div>
+
+    <div class="email-footer">
+      <p class="footer-text">
+        © 2025 Les Scoops du Jour. Tous droits réservés.<br>
+        <a href="{{siteUrl}}/privacy" style="color: #ccc;">Politique de confidentialité</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

@@ -37,6 +37,9 @@ import { initStorageManager, saveFavorite, getFavorites, saveReadingHistory, get
 // Importer le composant de préférences utilisateur
 import { initUserPreferences } from './components/UserPreferences.js';
 
+// Importer le système newsletter
+import { initNewsletter } from './components/Newsletter.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -70,6 +73,9 @@ async function initApp() {
 
     // Initialiser les préférences utilisateur
     initUserPreferences(window.storageManager);
+
+    // Initialiser le système newsletter
+    initNewsletter(window.storageManager);
 
     // Configurer les écouteurs d'événements
     setupEventListeners();
