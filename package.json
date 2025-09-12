@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "jest"
   },
   "keywords": ["news", "benin", "actualites", "plateforme"],
   "author": "",
@@ -17,7 +18,8 @@
     "webpack-dev-server": "^4.15.1",
     "style-loader": "^3.3.3",
     "css-loader": "^6.8.1",
-    "html-webpack-plugin": "^5.5.3"
+    "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.7.0"
   },
   "dependencies": {}
 }
