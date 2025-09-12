@@ -64,6 +64,17 @@ function setupEventListeners() {
     }
   });
 
+  // Recherche instantanée avec suggestions
+  searchInput.addEventListener('input', debounce((e) => {
+    const query = e.target.value.trim();
+    if (query.length > 2) {
+      // Ici on pourrait afficher des suggestions instantanées
+      // Pour l'instant, on garde simple
+    } else {
+      // Masquer les suggestions si elles existent
+    }
+  }, 300));
+
   // Catégories
   const categoryCards = document.querySelectorAll('.category-card');
   categoryCards.forEach(card => {
@@ -95,10 +106,8 @@ function handleNavigation(e) {
 function handleSearch() {
   const query = document.getElementById('search-input').value.trim();
   if (query) {
-    searchQuery = query;
-    currentCategory = 'all';
-    currentPage = 1;
-    loadNews();
+    // Rediriger vers la page de recherche dédiée
+    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
   }
 }
 

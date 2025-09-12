@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de recherche - Les Scoops du Jour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/bundle.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Résultats de recherche - Les Scoops du Jour">
+    <meta name="robots" content="noindex, follow">
+</head>
+<body>
+    <!-- Header principal -->
+    <header class="header" id="main-header">
+        <div class="header-main">
+            <div class="container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <h1>Les Scoops du Jour</h1>
+                    <p>Actualités Béninoises</p>
+                </a>
+
+                <!-- Navigation desktop -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">Accueil</a></li>
+                        <li><a href="#politique" data-section="politique">Politique</a></li>
+                        <li><a href="#economie" data-section="economie">Économie</a></li>
+                        <li><a href="#sport" data-section="sport">Sport</a></li>
+                        <li><a href="#culture" data-section="culture">Culture</a></li>
+                        <li><a href="#tech" data-section="tech">Tech</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher des actualités..." id="search-input" autocomplete="off">
+                    <button id="search-btn" aria-label="Rechercher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <!-- Menu hamburger pour mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3>Menu</h3>
+                    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fermer">×</button>
+                </div>
+                <div class="mobile-nav-body">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">🏠 Accueil</a></li>
+                        <li><a href="#politique" data-section="politique">🏛️ Politique</a></li>
+                        <li><a href="#economie" data-section="economie">💰 Économie</a></li>
+                        <li><a href="#sport" data-section="sport">⚽ Sport</a></li>
+                        <li><a href="#culture" data-section="culture">🎭 Culture</a></li>
+                        <li><a href="#tech" data-section="tech">💻 Tech</a></li>
+                    </ul>
+                    <div class="mobile-nav-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Rechercher..." id="mobile-search-input" autocomplete="off">
+                            <button id="mobile-search-btn" aria-label="Rechercher">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section de recherche -->
+        <section class="search-section">
+            <div class="container">
+                <!-- Barre de recherche principale -->
+                <div class="search-hero">
+                    <div class="search-hero-content">
+                        <h1>Résultats de recherche</h1>
+                        <div class="search-input-wrapper">
+                            <input type="text" id="main-search-input" placeholder="Rechercher des actualités..." autocomplete="off">
+                            <button id="main-search-btn" class="btn btn-primary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                                Rechercher
+                            </button>
+                        </div>
+                        <div class="search-suggestions" id="search-suggestions"></div>
+                    </div>
+                </div>
+
+                <!-- Filtres de recherche -->
+                <div class="search-filters" id="search-filters">
+                    <div class="filters-header">
+                        <h3>Filtres</h3>
+                        <button id="toggle-filters" class="btn-link">Masquer les filtres</button>
+                    </div>
+
+                    <div class="filters-content">
+                        <div class="filter-group">
+                            <label for="category-filter">Catégorie</label>
+                            <select id="category-filter" class="form-control">
+                                <option value="all">Toutes les catégories</option>
+                                <option value="politique">Politique</option>
+                                <option value="economie">Économie</option>
+                                <option value="culture">Culture</option>
+                                <option value="sport">Sport</option>
+                                <option value="education">Éducation</option>
+                                <option value="sante">Santé</option>
+                                <option value="tech">Tech</option>
+                                <option value="environnement">Environnement</option>
+                                <option value="justice">Justice</option>
+                                <option value="agriculture">Agriculture</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="author-filter">Auteur</label>
+                            <select id="author-filter" class="form-control">
+                                <option value="all">Tous les auteurs</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="date-filter">Période</label>
+                            <select id="date-filter" class="form-control">
+                                <option value="">Toutes les dates</option>
+                                <option value="today">Aujourd'hui</option>
+                                <option value="week">Cette semaine</option>
+                                <option value="month">Ce mois-ci</option>
+                                <option value="year">Cette année</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="rating-filter">Note minimale</label>
+                            <select id="rating-filter" class="form-control">
+                                <option value="">Toutes les notes</option>
+                                <option value="4.5">4.5+ étoiles</option>
+                                <option value="4.0">4.0+ étoiles</option>
+                                <option value="3.5">3.5+ étoiles</option>
+                                <option value="3.0">3.0+ étoiles</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-actions">
+                            <button id="apply-filters" class="btn btn-primary">Appliquer les filtres</button>
+                            <button id="reset-filters" class="btn btn-secondary">Réinitialiser</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Résultats de recherche -->
+                <div class="search-results" id="search-results-container">
+                    <!-- Chargement initial -->
+                    <div class="search-loading" id="search-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Recherche en cours...</p>
+                    </div>
+
+                    <!-- Aucun résultat -->
+                    <div class="no-results" id="no-results" style="display: none;">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>Aucun résultat trouvé</h3>
+                        <p>Essayez de modifier vos termes de recherche ou vos filtres.</p>
+                        <div class="no-results-suggestions">
+                            <h4>Suggestions :</h4>
+                            <ul id="no-results-suggestions"></ul>
+                        </div>
+                    </div>
+
+                    <!-- Résultats -->
+                    <div class="search-results-content" id="search-results-content" style="display: none;">
+                        <!-- En-tête des résultats -->
+                        <div class="results-header">
+                            <div class="results-info">
+                                <h2 id="results-count">0 résultat trouvé</h2>
+                                <p id="results-query">pour "<span id="query-text"></span>"</p>
+                            </div>
+                            <div class="results-sort">
+                                <label for="sort-select">Trier par :</label>
+                                <select id="sort-select" class="form-control">
+                                    <option value="relevance">Pertinence</option>
+                                    <option value="date">Date</option>
+                                    <option value="rating">Note</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Liste des résultats -->
+                        <div class="results-list" id="results-list">
+                            <!-- Les résultats seront insérés ici dynamiquement -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="search-pagination" id="search-pagination" style="display: none;">
+                            <button id="prev-page" class="btn btn-secondary" disabled>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m15 18-6-6 6-6"/>
+                                </svg>
+                                Précédent
+                            </button>
+
+                            <div class="pagination-info">
+                                Page <span id="current-page">1</span> sur <span id="total-pages">1</span>
+                            </div>
+
+                            <button id="next-page" class="btn btn-secondary">
+                                Suivant
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/search.js"></script>
+</body>
+</html>
