@@ -19,6 +19,9 @@ import {
   setupNetworkOptimization
 } from './utils/AssetOptimizer.js';
 
+// Importer le système PWA
+import { initPWACore } from './utils/PWA.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -64,7 +67,10 @@ async function initApp() {
     // Mesurer les Core Web Vitals
     measureCoreWebVitals();
 
-    console.log('🚀 Application "Les Scoops du Jour" initialisée avec optimisations de performance');
+    // Initialiser le système PWA
+    initPWACore();
+
+    console.log('🚀 Application "Les Scoops du Jour" initialisée avec optimisations de performance et PWA');
   });
 }
 
