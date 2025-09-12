@@ -5,8 +5,11 @@
   "main": "src/index.html",
   "scripts": {
     "build": "webpack --mode production",
+    "build:prod": "webpack --config webpack.prod.js",
+    "build:analyze": "ANALYZE=true npm run build:prod",
     "dev": "webpack serve --mode development --open",
     "start": "npm run dev",
+    "serve:prod": "npx serve dist -p 3000",
     "test": "npm run test:unit",
     "test:unit": "jest --config jest.config.js",
     "test:integration": "jest --config jest.config.js --testPathPattern=integration",
@@ -20,7 +23,17 @@
     "test:coverage": "jest --config jest.config.js --coverage --coverageReporters=html",
     "test:watch": "jest --config jest.config.js --watch",
     "playwright:install": "playwright install",
-    "playwright:install-deps": "playwright install-deps"
+    "playwright:install-deps": "playwright install-deps",
+    "audit:security": "npm audit --audit-level high",
+    "audit:performance": "npm run test:lighthouse",
+    "audit:accessibility": "npx axe http://localhost:8080",
+    "audit:all": "npm run audit:security && npm run audit:performance && npm run audit:accessibility",
+    "deploy:preview": "npm run build:prod && npm run serve:prod",
+    "clean": "rm -rf dist coverage test-results playwright-report lighthouse-reports performance-reports",
+    "lint": "npx eslint src/**/*.js --fix",
+    "format": "npx prettier --write src/**/*.{js,css,html}",
+    "precommit": "npm run lint && npm run test:unit && npm run build",
+    "release": "npm run clean && npm run test:all && npm run build:prod && npm run audit:all"
   },
   "keywords": [
     "news",
