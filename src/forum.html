@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Communautaire - Les Scoops du Jour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/bundle.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Forum communautaire - Échangez et discutez avec la communauté des Scoops du Jour">
+    <meta name="keywords" content="forum, communauté, discussion, Bénin, actualités">
+</head>
+<body>
+    <!-- Header principal -->
+    <header class="header" id="main-header">
+        <div class="header-main">
+            <div class="container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <h1>Les Scoops du Jour</h1>
+                    <p>Actualités Béninoises</p>
+                </a>
+
+                <!-- Navigation desktop -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum" class="active">Forum</a></li>
+                        <li><a href="#politique" data-section="politique">Politique</a></li>
+                        <li><a href="#economie" data-section="economie">Économie</a></li>
+                        <li><a href="#sport" data-section="sport">Sport</a></li>
+                        <li><a href="#culture" data-section="culture">Culture</a></li>
+                        <li><a href="#tech" data-section="tech">Tech</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher..." id="search-input" autocomplete="off">
+                    <button id="search-btn" aria-label="Rechercher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <!-- Menu hamburger pour mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3>Menu</h3>
+                    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fermer">×</button>
+                </div>
+                <div class="mobile-nav-body">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">🏠 Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum" class="active">💬 Forum</a></li>
+                        <li><a href="#politique" data-section="politique">🏛️ Politique</a></li>
+                        <li><a href="#economie" data-section="economie">💰 Économie</a></li>
+                        <li><a href="#sport" data-section="sport">⚽ Sport</a></li>
+                        <li><a href="#culture" data-section="culture">🎭 Culture</a></li>
+                        <li><a href="#tech" data-section="tech">💻 Tech</a></li>
+                    </ul>
+                    <div class="mobile-nav-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Rechercher..." id="mobile-search-input" autocomplete="off">
+                            <button id="mobile-search-btn" aria-label="Rechercher">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Forum Header -->
+        <section class="forum-header">
+            <div class="container">
+                <div class="forum-header-content">
+                    <div class="forum-title">
+                        <h1>Forum Communautaire</h1>
+                        <p>Échangez, débattez et partagez vos idées avec la communauté</p>
+                    </div>
+
+                    <div class="forum-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-threads">0</span>
+                            <span class="stat-label">Discussions</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-posts">0</span>
+                            <span class="stat-label">Messages</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-members">0</span>
+                            <span class="stat-label">Membres</span>
+                        </div>
+                    </div>
+
+                    <div class="forum-actions">
+                        <a href="forum-new.html" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M5 12h14"/>
+                            </svg>
+                            Nouvelle discussion
+                        </a>
+                        <div class="forum-search">
+                            <input type="text" id="forum-search" placeholder="Rechercher dans le forum..." autocomplete="off">
+                            <button id="forum-search-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Categories -->
+        <section class="forum-categories">
+            <div class="container">
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Les catégories seront chargées dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Activité récente</h2>
+                    <a href="#" class="view-all">Voir tout</a>
+                </div>
+
+                <div class="activity-list" id="activity-list">
+                    <!-- L'activité récente sera chargée dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Online Users -->
+        <section class="online-users">
+            <div class="container">
+                <div class="online-users-widget">
+                    <h3>Utilisateurs en ligne</h3>
+                    <div class="online-users-list" id="online-users-list">
+                        <!-- Les utilisateurs en ligne seront affichés ici -->
+                    </div>
+                    <div class="online-count">
+                        <span id="online-count">0</span> membres connectés
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/forum.js"></script>
+</body>
+</html>

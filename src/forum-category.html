@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Catégorie - Forum Communautaire - Les Scoops du Jour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/bundle.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="description" id="page-description" content="Forum communautaire - Discussions par catégorie">
+</head>
+<body>
+    <!-- Header principal -->
+    <header class="header" id="main-header">
+        <div class="header-main">
+            <div class="container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <h1>Les Scoops du Jour</h1>
+                    <p>Actualités Béninoises</p>
+                </a>
+
+                <!-- Navigation desktop -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum">Forum</a></li>
+                        <li><a href="#politique" data-section="politique">Politique</a></li>
+                        <li><a href="#economie" data-section="economie">Économie</a></li>
+                        <li><a href="#sport" data-section="sport">Sport</a></li>
+                        <li><a href="#culture" data-section="culture">Culture</a></li>
+                        <li><a href="#tech" data-section="tech">Tech</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher..." id="search-input" autocomplete="off">
+                    <button id="search-btn" aria-label="Rechercher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <!-- Menu hamburger pour mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3>Menu</h3>
+                    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fermer">×</button>
+                </div>
+                <div class="mobile-nav-body">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">🏠 Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum">💬 Forum</a></li>
+                        <li><a href="#politique" data-section="politique">🏛️ Politique</a></li>
+                        <li><a href="#economie" data-section="economie">💰 Économie</a></li>
+                        <li><a href="#sport" data-section="sport">⚽ Sport</a></li>
+                        <li><a href="#culture" data-section="culture">🎭 Culture</a></li>
+                        <li><a href="#tech" data-section="tech">💻 Tech</a></li>
+                    </ul>
+                    <div class="mobile-nav-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Rechercher..." id="mobile-search-input" autocomplete="off">
+                            <button id="mobile-search-btn" aria-label="Rechercher">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li id="breadcrumb-category">Catégorie</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Category Header -->
+        <section class="category-header">
+            <div class="container">
+                <div class="category-info">
+                    <div class="category-icon" id="category-icon">📝</div>
+                    <div class="category-details">
+                        <h1 id="category-title">Catégorie</h1>
+                        <p id="category-description">Description de la catégorie</p>
+                        <div class="category-stats">
+                            <span id="category-threads">0 discussions</span>
+                            <span id="category-posts">0 messages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-actions">
+                    <a href="forum-new.html" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        Nouvelle discussion
+                    </a>
+                    <div class="category-filters">
+                        <select id="sort-select">
+                            <option value="latest">Plus récent</option>
+                            <option value="popular">Plus populaire</option>
+                            <option value="oldest">Plus ancien</option>
+                            <option value="pinned">Épinglés en premier</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Threads List -->
+        <section class="threads-section">
+            <div class="container">
+                <div class="threads-header">
+                    <h2>Discussions</h2>
+                    <div class="threads-info">
+                        <span id="threads-count">0 discussions</span>
+                    </div>
+                </div>
+
+                <div class="threads-list" id="threads-list">
+                    <!-- Les discussions seront chargées dynamiquement -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="threads-pagination" id="threads-pagination" style="display: none;">
+                    <button id="prev-page" class="btn btn-secondary" disabled>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                        Précédent
+                    </button>
+
+                    <div class="pagination-info">
+                        Page <span id="current-page">1</span> sur <span id="total-pages">1</span>
+                    </div>
+
+                    <button id="next-page" class="btn btn-secondary">
+                        Suivant
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <div class="empty-icon">💬</div>
+                    <h3>Aucune discussion</h3>
+                    <p>Soyez le premier à lancer une discussion dans cette catégorie !</p>
+                    <a href="forum-new.html" class="btn btn-primary">Créer une discussion</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Rules -->
+        <section class="category-rules">
+            <div class="container">
+                <div class="rules-widget">
+                    <h3>Règles de la catégorie</h3>
+                    <div class="rules-content" id="category-rules">
+                        <p>Respectez les autres membres et restez courtois dans vos échanges.</p>
+                        <p>Évitez les attaques personnelles et les propos haineux.</p>
+                        <p>Restez constructif et argumentez vos points de vue.</p>
+                        <p>Signalez tout contenu inapproprié aux modérateurs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/forum-category.js"></script>
+</body>
+</html>

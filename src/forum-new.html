@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle discussion - Forum Communautaire - Les Scoops du Jour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/bundle.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Créer une nouvelle discussion dans le forum communautaire">
+</head>
+<body>
+    <!-- Header principal -->
+    <header class="header" id="main-header">
+        <div class="header-main">
+            <div class="container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <h1>Les Scoops du Jour</h1>
+                    <p>Actualités Béninoises</p>
+                </a>
+
+                <!-- Navigation desktop -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum">Forum</a></li>
+                        <li><a href="#politique" data-section="politique">Politique</a></li>
+                        <li><a href="#economie" data-section="economie">Économie</a></li>
+                        <li><a href="#sport" data-section="sport">Sport</a></li>
+                        <li><a href="#culture" data-section="culture">Culture</a></li>
+                        <li><a href="#tech" data-section="tech">Tech</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher..." id="search-input" autocomplete="off">
+                    <button id="search-btn" aria-label="Rechercher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <!-- Menu hamburger pour mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3>Menu</h3>
+                    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fermer">×</button>
+                </div>
+                <div class="mobile-nav-body">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">🏠 Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum">💬 Forum</a></li>
+                        <li><a href="#politique" data-section="politique">🏛️ Politique</a></li>
+                        <li><a href="#economie" data-section="economie">💰 Économie</a></li>
+                        <li><a href="#sport" data-section="sport">⚽ Sport</a></li>
+                        <li><a href="#culture" data-section="culture">🎭 Culture</a></li>
+                        <li><a href="#tech" data-section="tech">💻 Tech</a></li>
+                    </ul>
+                    <div class="mobile-nav-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Rechercher..." id="mobile-search-input" autocomplete="off">
+                            <button id="mobile-search-btn" aria-label="Rechercher">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li>Nouvelle discussion</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- New Thread Form -->
+        <section class="new-thread-section">
+            <div class="container">
+                <div class="new-thread-container">
+                    <div class="new-thread-header">
+                        <h1>Créer une nouvelle discussion</h1>
+                        <p>Partagez vos idées et lancez le débat avec la communauté</p>
+                    </div>
+
+                    <form id="new-thread-form" class="new-thread-form">
+                        <!-- Category Selection -->
+                        <div class="form-group">
+                            <label for="thread-category">Catégorie *</label>
+                            <select id="thread-category" name="category" required>
+                                <option value="">Choisir une catégorie</option>
+                                <option value="general">📰 Actualités générales</option>
+                                <option value="politics">🏛️ Politique béninoise</option>
+                                <option value="economy">💰 Économie et business</option>
+                                <option value="sports">⚽ Sport national</option>
+                                <option value="culture">🎭 Culture et traditions</option>
+                                <option value="help">❓ Questions/Aide</option>
+                            </select>
+                        </div>
+
+                        <!-- Thread Title -->
+                        <div class="form-group">
+                            <label for="thread-title">Titre de la discussion *</label>
+                            <input
+                                type="text"
+                                id="thread-title"
+                                name="title"
+                                placeholder="Posez votre question ou annoncez votre sujet..."
+                                maxlength="200"
+                                required
+                            >
+                            <div class="char-counter">
+                                <span id="title-counter">0</span>/200 caractères
+                            </div>
+                        </div>
+
+                        <!-- Thread Content -->
+                        <div class="form-group">
+                            <label for="thread-content">Contenu *</label>
+                            <div class="editor-container">
+                                <div class="editor-toolbar">
+                                    <button type="button" class="editor-btn" data-command="bold" title="Gras">
+                                        <strong>B</strong>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="italic" title="Italique">
+                                        <em>I</em>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="underline" title="Souligné">
+                                        <u>U</u>
+                                    </button>
+                                    <span class="toolbar-separator"></span>
+                                    <button type="button" class="editor-btn" data-command="insertUnorderedList" title="Liste">
+                                        • List
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="insertOrderedList" title="Liste numérotée">
+                                        1. List
+                                    </button>
+                                    <span class="toolbar-separator"></span>
+                                    <button type="button" class="editor-btn" data-command="createLink" title="Lien">
+                                        🔗
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="insertImage" title="Image">
+                                        🖼️
+                                    </button>
+                                </div>
+                                <div
+                                    id="thread-content"
+                                    class="editor-content"
+                                    contenteditable="true"
+                                    placeholder="Décrivez votre sujet en détail..."
+                                    required
+                                ></div>
+                            </div>
+                            <div class="char-counter">
+                                <span id="content-counter">0</span>/5000 caractères
+                            </div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="form-group">
+                            <label for="thread-tags">Tags (optionnel)</label>
+                            <input
+                                type="text"
+                                id="thread-tags"
+                                name="tags"
+                                placeholder="Séparez les tags par des virgules (ex: politique, économie, bénin)"
+                                maxlength="100"
+                            >
+                            <small class="form-help">Les tags aident les autres membres à trouver votre discussion</small>
+                        </div>
+
+                        <!-- Poll (Optional) -->
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="enable-poll" name="enablePoll">
+                                <span class="checkmark"></span>
+                                Ajouter un sondage à cette discussion
+                            </label>
+                        </div>
+
+                        <div id="poll-section" class="poll-section" style="display: none;">
+                            <div class="form-group">
+                                <label for="poll-question">Question du sondage</label>
+                                <input
+                                    type="text"
+                                    id="poll-question"
+                                    name="pollQuestion"
+                                    placeholder="Ex: Êtes-vous d'accord avec cette proposition ?"
+                                    maxlength="200"
+                                >
+                            </div>
+
+                            <div id="poll-options" class="poll-options">
+                                <div class="poll-option">
+                                    <input
+                                        type="text"
+                                        placeholder="Option 1"
+                                        maxlength="100"
+                                        class="poll-option-input"
+                                    >
+                                    <button type="button" class="remove-option-btn" style="display: none;">×</button>
+                                </div>
+                                <div class="poll-option">
+                                    <input
+                                        type="text"
+                                        placeholder="Option 2"
+                                        maxlength="100"
+                                        class="poll-option-input"
+                                    >
+                                    <button type="button" class="remove-option-btn" style="display: none;">×</button>
+                                </div>
+                            </div>
+
+                            <button type="button" id="add-poll-option" class="btn btn-outline">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                                Ajouter une option
+                            </button>
+                        </div>
+
+                        <!-- Preview -->
+                        <div class="form-group">
+                            <button type="button" id="preview-thread" class="btn btn-outline">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                Aperçu
+                            </button>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-actions">
+                            <button type="button" id="cancel-thread" class="btn btn-secondary">Annuler</button>
+                            <button type="submit" id="submit-thread" class="btn btn-primary" disabled>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                                Créer la discussion
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Preview Modal -->
+                    <div id="preview-modal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Aperçu de la discussion</h3>
+                                <button class="modal-close" id="close-preview">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="preview-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guidelines -->
+        <section class="guidelines-section">
+            <div class="container">
+                <div class="guidelines-widget">
+                    <h3>Conseils pour une bonne discussion</h3>
+                    <div class="guidelines-content">
+                        <div class="guideline-item">
+                            <div class="guideline-icon">🎯</div>
+                            <div class="guideline-text">
+                                <strong>Choisissez un titre clair</strong><br>
+                                Un bon titre attire l'attention et décrit précisément votre sujet.
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-icon">📝</div>
+                            <div class="guideline-text">
+                                <strong>Soyez détaillé</strong><br>
+                                Fournissez suffisamment de contexte pour que les autres puissent bien comprendre votre sujet.
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-icon">🏷️</div>
+                            <div class="guideline-text">
+                                <strong>Utilisez les tags appropriés</strong><br>
+                                Les tags aident les autres membres à trouver votre discussion.
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-icon">🤝</div>
+                            <div class="guideline-text">
+                                <strong>Restez courtois</strong><br>
+                                Respectez les opinions des autres et maintenez un débat constructif.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/forum-new.js"></script>
+</body>
+</html>

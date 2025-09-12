@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Discussion - Forum Communautaire - Les Scoops du Jour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/bundle.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="description" id="page-description" content="Discussion du forum communautaire">
+</head>
+<body>
+    <!-- Header principal -->
+    <header class="header" id="main-header">
+        <div class="header-main">
+            <div class="container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <h1>Les Scoops du Jour</h1>
+                    <p>Actualités Béninoises</p>
+                </a>
+
+                <!-- Navigation desktop -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum">Forum</a></li>
+                        <li><a href="#politique" data-section="politique">Politique</a></li>
+                        <li><a href="#economie" data-section="economie">Économie</a></li>
+                        <li><a href="#sport" data-section="sport">Sport</a></li>
+                        <li><a href="#culture" data-section="culture">Culture</a></li>
+                        <li><a href="#tech" data-section="tech">Tech</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Barre de recherche -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher..." id="search-input" autocomplete="off">
+                    <button id="search-btn" aria-label="Rechercher">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <!-- Menu hamburger pour mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation mobile -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3>Menu</h3>
+                    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fermer">×</button>
+                </div>
+                <div class="mobile-nav-body">
+                    <ul>
+                        <li><a href="index.html" data-section="accueil">🏠 Accueil</a></li>
+                        <li><a href="forum.html" data-section="forum">💬 Forum</a></li>
+                        <li><a href="#politique" data-section="politique">🏛️ Politique</a></li>
+                        <li><a href="#economie" data-section="economie">💰 Économie</a></li>
+                        <li><a href="#sport" data-section="sport">⚽ Sport</a></li>
+                        <li><a href="#culture" data-section="culture">🎭 Culture</a></li>
+                        <li><a href="#tech" data-section="tech">💻 Tech</a></li>
+                    </ul>
+                    <div class="mobile-nav-search">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Rechercher..." id="mobile-search-input" autocomplete="off">
+                            <button id="mobile-search-btn" aria-label="Rechercher">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li id="breadcrumb-category"><a href="#" id="category-link">Catégorie</a></li>
+                <li id="breadcrumb-thread">Discussion</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Thread Header -->
+        <section class="thread-header">
+            <div class="container">
+                <div class="thread-info">
+                    <div class="thread-status">
+                        <span id="thread-status" class="status-indicator"></span>
+                        <span id="thread-category" class="category-badge">Catégorie</span>
+                    </div>
+
+                    <h1 id="thread-title">Titre de la discussion</h1>
+
+                    <div class="thread-meta">
+                        <div class="thread-author">
+                            <img id="author-avatar" src="" alt="Auteur" class="author-avatar">
+                            <div class="author-info">
+                                <span class="author-name" id="author-name">Auteur</span>
+                                <span class="author-role" id="author-role">Membre</span>
+                            </div>
+                        </div>
+
+                        <div class="thread-stats">
+                            <span id="thread-views">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                0 vues
+                            </span>
+                            <span id="thread-replies">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
+                                </svg>
+                                0 réponses
+                            </span>
+                            <span id="thread-created">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                Créé il y a
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thread-actions">
+                    <button id="thread-like" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <span id="thread-likes">0</span>
+                    </button>
+
+                    <button id="thread-bookmark" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Sauvegarder
+                    </button>
+
+                    <button id="thread-share" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"/>
+                            <circle cx="6" cy="12" r="3"/>
+                            <circle cx="18" cy="19" r="3"/>
+                            <path d="m8.59 13.51 6.83 3.98"/>
+                            <path d="m15.41 6.51-6.82 3.98"/>
+                        </svg>
+                        Partager
+                    </button>
+
+                    <div class="thread-admin-actions" id="thread-admin-actions" style="display: none;">
+                        <button id="thread-pin" class="btn btn-outline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m15.536 8.464 2.828-2.828-2.828-2.828-2.828 2.828 2.828 2.828z"/>
+                                <path d="M4.929 4.929l2.828 2.828"/>
+                                <path d="m21.5 12-2.121-2.121-4.243 4.243 2.121 2.121"/>
+                                <path d="M14.828 14.828l-2.829 2.829-4.242-4.243-2.122 2.122"/>
+                            </svg>
+                            Épingler
+                        </button>
+
+                        <button id="thread-lock" class="btn btn-outline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                <circle cx="12" cy="16" r="1"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            Verrouiller
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thread Content -->
+        <section class="thread-content">
+            <div class="container">
+                <div class="thread-layout">
+                    <!-- Posts -->
+                    <div class="posts-section">
+                        <div class="posts-list" id="posts-list">
+                            <!-- Les messages seront chargés dynamiquement -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="posts-pagination" id="posts-pagination" style="display: none;">
+                            <button id="posts-prev-page" class="btn btn-secondary" disabled>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m15 18-6-6 6-6"/>
+                                </svg>
+                                Précédent
+                            </button>
+
+                            <div class="pagination-info">
+                                Page <span id="posts-current-page">1</span> sur <span id="posts-total-pages">1</span>
+                            </div>
+
+                            <button id="posts-next-page" class="btn btn-secondary">
+                                Suivant
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="thread-sidebar">
+                        <!-- Thread Info -->
+                        <div class="sidebar-widget thread-info-widget">
+                            <h3>Informations</h3>
+                            <div class="thread-info-content">
+                                <div class="info-item">
+                                    <span class="info-label">Créé par</span>
+                                    <span class="info-value" id="sidebar-author">Auteur</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Créé le</span>
+                                    <span class="info-value" id="sidebar-created">Date</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Dernière activité</span>
+                                    <span class="info-value" id="sidebar-last-activity">Date</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Vues</span>
+                                    <span class="info-value" id="sidebar-views">0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Réponses</span>
+                                    <span class="info-value" id="sidebar-replies">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Participants -->
+                        <div class="sidebar-widget participants-widget">
+                            <h3>Participants</h3>
+                            <div class="participants-list" id="participants-list">
+                                <!-- Les participants seront affichés ici -->
+                            </div>
+                        </div>
+
+                        <!-- Related Threads -->
+                        <div class="sidebar-widget related-threads-widget">
+                            <h3>Discussions similaires</h3>
+                            <div class="related-threads-list" id="related-threads-list">
+                                <!-- Les discussions similaires seront affichées ici -->
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reply Form -->
+        <section class="reply-section">
+            <div class="container">
+                <div class="reply-form-container" id="reply-form-container">
+                    <!-- Le formulaire de réponse sera chargé dynamiquement -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/forum-thread.js"></script>
+</body>
+</html>
