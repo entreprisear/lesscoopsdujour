@@ -14,16 +14,6 @@
     <meta name="author" content="Entreprise AR">
 </head>
 <body>
-    <!-- Breaking News - Fil d'actualité défilant -->
-    <div class="breaking-news">
-        <div class="container">
-            <div class="breaking-news-content">
-                <span>📰 Nouveau gouvernement formé au Bénin • Économie béninoise en croissance • Festival international de Ouidah • Victoire historique du Bénin en Coupe d'Afrique</span>
-                <span>📰 Nouveau gouvernement formé au Bénin • Économie béninoise en croissance • Festival international de Ouidah • Victoire historique du Bénin en Coupe d'Afrique</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Header principal -->
     <header class="header" id="main-header">
         <div class="header-main">
@@ -99,42 +89,242 @@
         </nav>
     </header>
 
-    <main class="main-content">
-        <section class="hero">
+    <main>
+        <!-- Hero Section - Article Principal -->
+        <section class="hero-section">
             <div class="container">
-                <h2>Les dernières actualités du Bénin</h2>
-                <p>Restez informé des événements qui façonnent notre pays</p>
+                <div class="hero-main">
+                    <article class="hero-article">
+                        <div class="hero-image">
+                            <img src="https://via.placeholder.com/800x500/FE0202/FFFFFF?text=Gouvernement+Talon" alt="Nouveau gouvernement formé au Bénin">
+                            <div class="hero-category">
+                                <span class="badge badge-primary">Politique</span>
+                            </div>
+                        </div>
+                        <div class="hero-content">
+                            <h1 class="hero-title">Nouveau gouvernement formé : Patrice Talon nomme ses ministres</h1>
+                            <p class="hero-excerpt">Le président Patrice Talon a annoncé la composition de son nouveau gouvernement après plusieurs semaines de consultations. Découvrez les principales nominations et les défis qui attendent l'équipe gouvernementale.</p>
+                            <div class="hero-meta">
+                                <span class="hero-author">Par Marie KPOGNON</span>
+                                <span class="hero-date">12 sept. 2025</span>
+                                <span class="hero-read-time">5 min de lecture</span>
+                            </div>
+                            <a href="#" class="btn btn-primary hero-cta">Lire l'article complet</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Articles secondaires -->
+                <div class="hero-secondary">
+                    <article class="secondary-article">
+                        <img src="https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Croissance+Économique" alt="Économie béninoise">
+                        <div class="secondary-content">
+                            <h3>Économie béninoise : Croissance de 6,8% au premier trimestre</h3>
+                            <span class="secondary-meta">Économie • 11 sept. 2025</span>
+                        </div>
+                    </article>
+
+                    <article class="secondary-article">
+                        <img src="https://via.placeholder.com/300x200/9C27B0/FFFFFF?text=Festival+Ouidah" alt="Festival d'Ouidah">
+                        <div class="secondary-content">
+                            <h3>Festival international d'Ouidah : Plus de 50 000 visiteurs attendus</h3>
+                            <span class="secondary-meta">Culture • 10 sept. 2025</span>
+                        </div>
+                    </article>
+
+                    <article class="secondary-article">
+                        <img src="https://via.placeholder.com/300x200/FF9800/FFFFFF?text=Victoire+CAN" alt="Équipe nationale">
+                        <div class="secondary-content">
+                            <h3>Équipe nationale : Victoire historique contre le Maroc en CAN</h3>
+                            <span class="secondary-meta">Sport • 9 sept. 2025</span>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section class="news-grid" id="news-container">
-            <!-- Les articles seront chargés dynamiquement ici -->
+        <!-- Breaking News - Fil d'actualité défilant -->
+        <section class="breaking-news">
+            <div class="container">
+                <div class="breaking-news-content">
+                    <span>📰 Nouveau gouvernement formé au Bénin • Économie béninoise en croissance • Festival international de Ouidah • Victoire historique du Bénin en Coupe d'Afrique • Réforme éducative • Campagne vaccination COVID-19 • Intelligence artificielle au Bénin • Protection environnement • Réforme judiciaire • Révolution agricole</span>
+                    <span>� Nouveau gouvernement formé au Bénin • Économie béninoise en croissance • Festival international de Ouidah • Victoire historique du Bénin en Coupe d'Afrique • Réforme éducative • Campagne vaccination COVID-19 • Intelligence artificielle au Bénin • Protection environnement • Réforme judiciaire • Révolution agricole</span>
+                </div>
+            </div>
         </section>
 
-        <section class="categories">
+        <!-- Grille d'articles -->
+        <section class="news-grid">
             <div class="container">
-                <h3>Catégories</h3>
-                <div class="category-grid">
-                    <div class="category-card" data-category="politique">
-                        <h4>Politique</h4>
-                        <p>Découvrez les dernières nouvelles politiques</p>
+                <div class="news-grid" id="news-container">
+                    <!-- Articles chargés dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Catégories -->
+        <section class="categories-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Explorer par catégorie</h2>
+                    <a href="#" class="section-link">Toutes les catégories</a>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card-large" data-category="politique">
+                        <div class="category-image">
+                            <img src="https://via.placeholder.com/300x200/FE0202/FFFFFF?text=Politique" alt="Politique">
+                        </div>
+                        <div class="category-content">
+                            <h3>Politique</h3>
+                            <p>Découvrez les dernières nouvelles politiques, les décisions gouvernementales et l'actualité parlementaire.</p>
+                            <div class="category-stats">
+                                <span>245 articles</span>
+                                <span>•</span>
+                                <span>Mise à jour il y a 2h</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-card" data-category="economie">
-                        <h4>Économie</h4>
-                        <p>Actualités économiques et financières</p>
+
+                    <div class="category-card-large" data-category="economie">
+                        <div class="category-image">
+                            <img src="https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Économie" alt="Économie">
+                        </div>
+                        <div class="category-content">
+                            <h3>Économie</h3>
+                            <p>Actualités économiques, financières, commerciales et entrepreneuriales du Bénin et d'Afrique.</p>
+                            <div class="category-stats">
+                                <span>189 articles</span>
+                                <span>•</span>
+                                <span>Mise à jour il y a 4h</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-card" data-category="culture">
-                        <h4>Culture</h4>
-                        <p>Événements culturels et artistiques</p>
+
+                    <div class="category-card-large" data-category="sport">
+                        <div class="category-image">
+                            <img src="https://via.placeholder.com/300x200/FF9800/FFFFFF?text=Sport" alt="Sport">
+                        </div>
+                        <div class="category-content">
+                            <h3>Sport</h3>
+                            <p>Résultats sportifs, compétitions nationales et internationales, interviews d'athlètes béninois.</p>
+                            <div class="category-stats">
+                                <span>156 articles</span>
+                                <span>•</span>
+                                <span>Mise à jour il y a 6h</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-card" data-category="sport">
-                        <h4>Sport</h4>
-                        <p>Résultats et actualités sportives</p>
+
+                    <div class="category-card-large" data-category="culture">
+                        <div class="category-image">
+                            <img src="https://via.placeholder.com/300x200/9C27B0/FFFFFF?text=Culture" alt="Culture">
+                        </div>
+                        <div class="category-content">
+                            <h3>Culture</h3>
+                            <p>Événements culturels, festivals, musique, cinéma, littérature et patrimoine béninois.</p>
+                            <div class="category-stats">
+                                <span>134 articles</span>
+                                <span>•</span>
+                                <span>Mise à jour il y a 8h</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <aside class="sidebar">
+        <!-- Articles populaires -->
+        <div class="sidebar-widget">
+            <h3 class="widget-title">Les plus lus</h3>
+            <div class="popular-articles">
+                <article class="popular-article">
+                    <div class="popular-rank">1</div>
+                    <div class="popular-content">
+                        <h4>Nouveau gouvernement : Les premières décisions</h4>
+                        <span class="popular-meta">2,450 lectures • Politique</span>
+                    </div>
+                </article>
+
+                <article class="popular-article">
+                    <div class="popular-rank">2</div>
+                    <div class="popular-content">
+                        <h4>Économie : Croissance record au Bénin</h4>
+                        <span class="popular-meta">1,890 lectures • Économie</span>
+                    </div>
+                </article>
+
+                <article class="popular-article">
+                    <div class="popular-rank">3</div>
+                    <div class="popular-content">
+                        <h4>Festival d'Ouidah : Bilan positif</h4>
+                        <span class="popular-meta">1,650 lectures • Culture</span>
+                    </div>
+                </article>
+
+                <article class="popular-article">
+                    <div class="popular-rank">4</div>
+                    <div class="popular-content">
+                        <h4>Équipe nationale : Préparation CAN 2025</h4>
+                        <span class="popular-meta">1,420 lectures • Sport</span>
+                    </div>
+                </article>
+
+                <article class="popular-article">
+                    <div class="popular-rank">5</div>
+                    <div class="popular-content">
+                        <h4>Intelligence artificielle : Nouveau centre</h4>
+                        <span class="popular-meta">1,380 lectures • Tech</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="sidebar-widget">
+            <h3 class="widget-title">Newsletter</h3>
+            <div class="newsletter-widget">
+                <p class="newsletter-text">Recevez les dernières actualités directement dans votre boîte mail</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre email" class="newsletter-input">
+                    <button type="submit" class="btn btn-primary newsletter-btn">S'inscrire</button>
+                </form>
+                <p class="newsletter-privacy">Nous respectons votre vie privée. Désinscription possible à tout moment.</p>
+            </div>
+        </div>
+
+        <!-- Publicité -->
+        <div class="sidebar-widget">
+            <div class="advertisement">
+                <div class="ad-placeholder">
+                    <span>Publicité</span>
+                    <div class="ad-content">
+                        <p>Espace publicitaire disponible</p>
+                        <small>Contactez-nous</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags populaires -->
+        <div class="sidebar-widget">
+            <h3 class="widget-title">Tags populaires</h3>
+            <div class="popular-tags">
+                <a href="#" class="tag">Politique</a>
+                <a href="#" class="tag">Économie</a>
+                <a href="#" class="tag">Sport</a>
+                <a href="#" class="tag">Culture</a>
+                <a href="#" class="tag">Éducation</a>
+                <a href="#" class="tag">Santé</a>
+                <a href="#" class="tag">Technologie</a>
+                <a href="#" class="tag">Environnement</a>
+                <a href="#" class="tag">Justice</a>
+                <a href="#" class="tag">Agriculture</a>
+            </div>
+        </div>
+    </aside>
 
     <footer class="footer">
         <div class="container">

@@ -249,3 +249,43 @@
   color: var(--text-light);
   border-color: var(--primary-color);
 }
+
+/* Star Ratings */
+.news-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.star {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  color: var(--gray-300);
+}
+
+.star.full {
+  color: #ffc107;
+}
+
+.star.half {
+  color: #ffc107;
+  position: relative;
+}
+
+.star.half::after {
+  content: '★';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: var(--gray-300);
+}
+
+.rating-score {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  margin-left: var(--spacing-xs);
+}

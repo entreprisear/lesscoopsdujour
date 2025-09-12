@@ -46,23 +46,57 @@ export function renderNews(newsData) {
 
 // Fonction pour créer une carte d'actualité
 function createNewsCard(article) {
+  const rating = article.rating || 4.0;
+  const stars = createStarRating(rating);
+
   return `
     <article class="news-card" data-id="${article.id}">
-      <img src="${article.urlToImage}" alt="${article.title}" loading="lazy">
-      <div class="news-card-content">
+      <div class="news-image">
+        <img src="${article.urlToImage}" alt="${article.title}" loading="lazy">
+        <div class="news-category">
+          <span class="badge badge-${getCategoryColor(article.category)}">${article.category}</span>
+        </div>
+      </div>
+      <div class="news-content">
         <h3>${article.title}</h3>
         <p>${article.description || 'Aucune description disponible'}</p>
-        <div class="news-card-meta">
-          <span class="source">${article.source}</span>
-          <span class="date">${article.publishedAt}</span>
-          <span class="category-badge badge badge-${getCategoryColor(article.category)}">${article.category}</span>
+        <div class="news-meta">
+          <span class="news-author">Par ${article.author}</span>
+          <span class="news-date">${article.publishedAt}</span>
         </div>
-        <a href="${article.url}" class="btn btn-primary" target="_blank" rel="noopener">
-          Lire l'article
-        </a>
+        <div class="news-rating">
+          ${stars}
+          <span class="rating-score">${rating.toFixed(1)}</span>
+        </div>
       </div>
     </article>
   `;
+}
+
+// Fonction pour créer les étoiles de notation
+function createStarRating(rating) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+  let starsHTML = '';
+
+  // Étoiles pleines
+  for (let i = 0; i < fullStars; i++) {
+    starsHTML += '<span class="star full">★</span>';
+  }
+
+  // Demi-étoile
+  if (hasHalfStar) {
+    starsHTML += '<span class="star half">★</span>';
+  }
+
+  // Étoiles vides
+  for (let i = 0; i < emptyStars; i++) {
+    starsHTML += '<span class="star empty">★</span>';
+  }
+
+  return starsHTML;
 }
 
 // Fonction pour obtenir la couleur de la catégorie
@@ -72,6 +106,12 @@ function getCategoryColor(category) {
     economie: 'success',
     culture: 'info',
     sport: 'warning',
+    education: 'info',
+    sante: 'success',
+    tech: 'primary',
+    environnement: 'success',
+    justice: 'warning',
+    agriculture: 'success',
     general: 'secondary'
   };
   return colors[category] || 'secondary';

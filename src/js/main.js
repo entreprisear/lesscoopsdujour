@@ -463,6 +463,196 @@ function setActiveNavigation() {
   }
 }
 
+// ===== FONCTIONNALITÉS DE LA PAGE D'ACCUEIL =====
+
+// Gestion du formulaire newsletter
+function initNewsletter() {
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', handleNewsletterSubmit);
+  }
+}
+
+function handleNewsletterSubmit(e) {
+  e.preventDefault();
+  const emailInput = e.target.querySelector('.newsletter-input');
+  const email = emailInput.value.trim();
+
+  if (email && isValidEmail(email)) {
+    // Simulation d'inscription
+    showNotification('Merci ! Vous êtes maintenant inscrit à notre newsletter.', 'success');
+    emailInput.value = '';
+  } else {
+    showNotification('Veuillez entrer une adresse email valide.', 'error');
+  }
+}
+
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Gestion des interactions avec les articles
+function initArticleInteractions() {
+  // Gestion des clics sur les articles
+  document.addEventListener('click', (e) => {
+    const article = e.target.closest('.news-card, .hero-article, .secondary-article, .category-card-large');
+    if (article && !e.target.closest('a')) {
+      e.preventDefault();
+      handleArticleClick(article);
+    }
+  });
+
+  // Gestion des clics sur les catégories
+  document.addEventListener('click', (e) => {
+    const categoryCard = e.target.closest('.category-card-large');
+    if (categoryCard) {
+      e.preventDefault();
+      const category = categoryCard.getAttribute('data-category');
+      if (category) {
+        // Mettre à jour la navigation
+        document.querySelectorAll('.nav a, .mobile-nav a').forEach(link => {
+          link.classList.remove('active');
+        });
+
+        const navLink = document.querySelector(`.nav a[data-section="${category}"]`);
+        const mobileNavLink = document.querySelector(`.mobile-nav a[data-section="${category}"]`);
+
+        if (navLink) navLink.classList.add('active');
+        if (mobileNavLink) mobileNavLink.classList.add('active');
+
+        // Changer de catégorie
+        currentCategory = category === 'accueil' ? 'all' : category;
+        currentPage = 1;
+        searchQuery = '';
+
+        loadNews();
+
+        // Scroll vers le haut
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  });
+}
+
+function handleArticleClick(article) {
+  // Animation de clic
+  article.style.transform = 'scale(0.98)';
+  setTimeout(() => {
+    article.style.transform = '';
+  }, 150);
+
+  // Ici vous pourriez naviguer vers l'article complet
+  console.log('Article cliqué:', article.querySelector('h3, .hero-title')?.textContent);
+}
+
+// Système de notifications
+function showNotification(message, type = 'info') {
+  // Supprimer les notifications existantes
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(notification => notification.remove());
+
+  // Créer la nouvelle notification
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <span class="notification-icon">${getNotificationIcon(type)}</span>
+      <span class="notification-message">${message}</span>
+      <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+    </div>
+  `;
+
+  // Ajouter au DOM
+  document.body.appendChild(notification);
+
+  // Animation d'entrée
+  setTimeout(() => notification.classList.add('show'), 10);
+
+  // Auto-suppression après 5 secondes
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }
+  }, 5000);
+}
+
+function getNotificationIcon(type) {
+  const icons = {
+    success: '✅',
+    error: '❌',
+    warning: '⚠️',
+    info: 'ℹ️'
+  };
+  return icons[type] || icons.info;
+}
+
+// Animation des éléments au scroll
+function initScrollAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observer les éléments à animer
+  const animateElements = document.querySelectorAll('.news-card, .category-card-large, .sidebar-widget');
+  animateElements.forEach(element => {
+    observer.observe(element);
+  });
+}
+
+// Gestion du lazy loading des images
+function initLazyLoading() {
+  const images = document.querySelectorAll('img[data-src]');
+
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+  } else {
+    // Fallback pour les navigateurs qui ne supportent pas IntersectionObserver
+    images.forEach(img => {
+      img.src = img.dataset.src;
+    });
+  }
+}
+
+// Améliorations de performance
+function initPerformanceOptimizations() {
+  // Préchargement des ressources critiques
+  const criticalResources = [
+    'css/main.css',
+    'css/components.css',
+    'css/responsive.css'
+  ];
+
+  criticalResources.forEach(resource => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = resource;
+    link.as = 'style';
+    document.head.appendChild(link);
+  });
+}
+
 // Update body padding to account for fixed header
 function updateBodyPadding() {
   const header = document.getElementById('main-header');
@@ -476,6 +666,22 @@ function updateBodyPadding() {
 // Initialize body padding on load and resize
 window.addEventListener('load', updateBodyPadding);
 window.addEventListener('resize', debounce(updateBodyPadding, 100));
+
+// Initialisation des fonctionnalités de la page d'accueil
+function initHomePageFeatures() {
+  initNewsletter();
+  initArticleInteractions();
+  initScrollAnimations();
+  initLazyLoading();
+  initPerformanceOptimizations();
+}
+
+// Ajouter l'initialisation dans la fonction principale
+const originalInitApp = window.initApp || function() {};
+window.initApp = function() {
+  originalInitApp();
+  initHomePageFeatures();
+};
 
 // Export pour utilisation dans d'autres modules
 export { loadNews, currentCategory, currentPage, searchQuery };

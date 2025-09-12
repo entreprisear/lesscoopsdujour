@@ -36,6 +36,17 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
+  /* Layout avec sidebar */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--spacing-3xl);
+  }
+
+  aside.sidebar {
+    margin-bottom: 0;
+  }
 }
 
 /* Medium devices (desktops, 1024px and up) */
