@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Scoops du Jour - Actualités Béninoises</title>
+    <link rel="stylesheet" href="bundle.css">
+    <link rel="icon" href="../src/assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Plateforme d'actualités béninoises - Les Scoops du Jour">
+    <meta name="keywords" content="Bénin, actualités, news, informations">
+    <meta name="author" content="Entreprise AR">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Les Scoops du Jour</h1>
+                <p>Actualités Béninoises</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#accueil" class="active">Accueil</a></li>
+                    <li><a href="#politique">Politique</a></li>
+                    <li><a href="#economie">Économie</a></li>
+                    <li><a href="#culture">Culture</a></li>
+                    <li><a href="#sport">Sport</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher..." id="search-input">
+                <button id="search-btn">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="container">
+                <h2>Les dernières actualités du Bénin</h2>
+                <p>Restez informé des événements qui façonnent notre pays</p>
+            </div>
+        </section>
+
+        <section class="news-grid" id="news-container">
+            <!-- Les articles seront chargés dynamiquement ici -->
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <h3>Catégories</h3>
+                <div class="category-grid">
+                    <div class="category-card" data-category="politique">
+                        <h4>Politique</h4>
+                        <p>Découvrez les dernières nouvelles politiques</p>
+                    </div>
+                    <div class="category-card" data-category="economie">
+                        <h4>Économie</h4>
+                        <p>Actualités économiques et financières</p>
+                    </div>
+                    <div class="category-card" data-category="culture">
+                        <h4>Culture</h4>
+                        <p>Événements culturels et artistiques</p>
+                    </div>
+                    <div class="category-card" data-category="sport">
+                        <h4>Sport</h4>
+                        <p>Résultats et actualités sportives</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Les Scoops du Jour. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bundle.js"></script>
+</body>
+</html>
