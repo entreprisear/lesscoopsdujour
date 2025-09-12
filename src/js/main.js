@@ -31,6 +31,12 @@ import { initAMPGenerator, setupAutoAMPGeneration } from './utils/AMPGenerator.j
 // Importer l'API Mock robuste
 import { initMockAPI, fetchArticles, fetchArticle, searchArticles, rateArticle } from './utils/MockAPI.js';
 
+// Importer le système de stockage utilisateur
+import { initStorageManager, saveFavorite, getFavorites, saveReadingHistory, getReadingHistory, saveUserPreferences, getUserPreferences } from './utils/StorageManager.js';
+
+// Importer le composant de préférences utilisateur
+import { initUserPreferences } from './components/UserPreferences.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -58,6 +64,12 @@ async function initApp() {
 
     // Initialiser l'API Mock robuste
     initMockAPI();
+
+    // Initialiser le système de stockage utilisateur
+    initStorageManager();
+
+    // Initialiser les préférences utilisateur
+    initUserPreferences(window.storageManager);
 
     // Configurer les écouteurs d'événements
     setupEventListeners();
