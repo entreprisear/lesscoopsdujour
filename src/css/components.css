@@ -3284,6 +3284,11 @@ mark {
   color: #333;
 }
 
+.beninois-theme {
+  background: linear-gradient(135deg, #f0f8e8 50%, #00a651 50%);
+  color: #1a1a1a;
+}
+
 .theme-name {
   font-size: 0.875rem;
   font-weight: 500;

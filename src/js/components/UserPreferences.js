@@ -142,6 +142,12 @@ export class UserPreferences {
             </div>
           </label>
           <label class="theme-option">
+            <input type="radio" name="theme" value="beninois" ${prefs.theme === 'beninois' ? 'checked' : ''}>
+            <div class="theme-preview beninois-theme">
+              <div class="theme-name">Béninois</div>
+            </div>
+          </label>
+          <label class="theme-option">
             <input type="radio" name="theme" value="auto" ${prefs.theme === 'auto' ? 'checked' : ''}>
             <div class="theme-preview auto-theme">
               <div class="theme-name">Auto</div>
