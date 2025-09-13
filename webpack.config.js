@@ -8,9 +8,17 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
-  entry: './src/js/main.js',
+  entry: {
+    main: './src/js/main.js',
+    widgets: './src/js/widgets.js'
+  },
   output: {
-    filename: isProduction ? 'bundle.[contenthash].js' : 'bundle.js',
+    filename: (chunkData) => {
+      if (chunkData.chunk.name === 'widgets') {
+        return isProduction ? 'widgets.[contenthash].js' : 'widgets.js';
+      }
+      return isProduction ? 'bundle.[contenthash].js' : 'bundle.js';
+    },
     path: path.resolve(__dirname, 'public'),
     clean: true,
     publicPath: '/',

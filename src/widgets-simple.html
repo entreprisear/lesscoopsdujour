@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple Simple - Widgets Les Scoops du Jour</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+
+        .example {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .example h2 {
+            color: #FE0202;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'SF Mono', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .widget-container {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>📰 Widgets Les Scoops du Jour</h1>
+    <p>Exemples simples d'intégration des widgets d'actualités béninoises.</p>
+
+    <div class="example">
+        <h2>Articles Récents</h2>
+        <p>Affichage simple des 5 derniers articles.</p>
+
+        <div class="code">
+<div id="recent-articles"></div>
+<script>
+new ScoopsWidgets.ScoopsWidget('recent-articles', {
+  limit: 5,
+  showImages: true
+});
+</script>
+        </div>
+
+        <div class="widget-container">
+            <div id="recent-articles"></div>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Article du Jour</h2>
+        <p>Mise en avant de l'article principal.</p>
+
+        <div class="code">
+<div id="article-day"></div>
+<script>
+new ScoopsWidgets.ArticleOfTheDayWidget('article-day');
+</script>
+        </div>
+
+        <div class="widget-container">
+            <div id="article-day"></div>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Météo Bénin</h2>
+        <p>Conditions météorologiques actuelles.</p>
+
+        <div class="code">
+<div id="weather"></div>
+<script>
+new ScoopsWidgets.WeatherWidget('weather', {
+  city: 'Cotonou'
+});
+</script>
+        </div>
+
+        <div class="widget-container">
+            <div id="weather"></div>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Breaking News</h2>
+        <p>Actualités urgentes en continu.</p>
+
+        <div class="code">
+<div id="breaking-news"></div>
+<script>
+new ScoopsWidgets.BreakingNewsTicker('breaking-news');
+</script>
+        </div>
+
+        <div class="widget-container">
+            <div id="breaking-news"></div>
+        </div>
+    </div>
+
+    <!-- Inclure le script des widgets -->
+    <script src="js/widgets.js"></script>
+
+    <script>
+        // Initialiser tous les widgets
+        document.addEventListener('DOMContentLoaded', function() {
+            new ScoopsWidgets.ScoopsWidget('recent-articles', {
+                limit: 5,
+                showImages: true
+            });
+
+            new ScoopsWidgets.ArticleOfTheDayWidget('article-day');
+
+            new ScoopsWidgets.WeatherWidget('weather', {
+                city: 'Cotonou'
+            });
+
+            new ScoopsWidgets.BreakingNewsTicker('breaking-news');
+        });
+    </script>
+</body>
+</html>
