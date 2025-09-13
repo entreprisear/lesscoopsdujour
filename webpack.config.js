@@ -57,6 +57,22 @@ module.exports = {
         minifyURLs: true,
       } : false,
     }),
+    new HtmlWebpackPlugin({
+      template: './src/admin.html',
+      filename: 'admin.html',
+      minify: isProduction ? {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      } : false,
+    }),
     ...(isProduction ? [
       new MiniCssExtractPlugin({
         filename: 'styles.[contenthash].css',
