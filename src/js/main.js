@@ -22,6 +22,9 @@ import {
 // Importer le système PWA
 import { initPWACore } from './utils/PWA.js';
 
+// Importer les fonctionnalités mobiles natives
+import MobileFeatures from './utils/MobileFeatures.js';
+
 // Importer le système SEO
 import { initSEOManager, measureSEOEffectiveness } from './utils/SEOManager.js';
 
@@ -135,6 +138,9 @@ async function initApp() {
 
     // Initialiser le système PWA
     initPWACore();
+
+    // Initialiser les fonctionnalités mobiles natives
+    window.mobileFeatures = new MobileFeatures();
 
     // Initialiser le système SEO
     initSEOManager();
