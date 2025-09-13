@@ -601,32 +601,8 @@ function setActiveNavigation() {
 
 // ===== FONCTIONNALITÉS DE LA PAGE D'ACCUEIL =====
 
-// Gestion du formulaire newsletter
-function initNewsletter() {
-  const newsletterForm = document.querySelector('.newsletter-form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', handleNewsletterSubmit);
-  }
-}
-
-function handleNewsletterSubmit(e) {
-  e.preventDefault();
-  const emailInput = e.target.querySelector('.newsletter-input');
-  const email = emailInput.value.trim();
-
-  if (email && isValidEmail(email)) {
-    // Simulation d'inscription
-    showNotification('Merci ! Vous êtes maintenant inscrit à notre newsletter.', 'success');
-    emailInput.value = '';
-  } else {
-    showNotification('Veuillez entrer une adresse email valide.', 'error');
-  }
-}
-
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+// Gestion du formulaire newsletter (handled by Newsletter component)
+// Newsletter functionality is now handled by the imported Newsletter component
 
 // Gestion des interactions avec les articles
 function initArticleInteractions() {
