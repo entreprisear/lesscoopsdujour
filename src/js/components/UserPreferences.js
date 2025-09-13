@@ -148,6 +148,12 @@ export class UserPreferences {
             </div>
           </label>
           <label class="theme-option">
+            <input type="radio" name="theme" value="sepia" ${prefs.theme === 'sepia' ? 'checked' : ''}>
+            <div class="theme-preview sepia-theme">
+              <div class="theme-name">Sepia</div>
+            </div>
+          </label>
+          <label class="theme-option">
             <input type="radio" name="theme" value="auto" ${prefs.theme === 'auto' ? 'checked' : ''}>
             <div class="theme-preview auto-theme">
               <div class="theme-name">Auto</div>

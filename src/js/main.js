@@ -49,6 +49,9 @@ import { initSocialWidgets } from './components/SocialWidgets.js';
 // Importer le gestionnaire Open Graph
 import { initOpenGraphManager } from './utils/OpenGraphManager.js';
 
+// Importer le gestionnaire de thèmes
+import { initThemeManager } from './utils/ThemeManager.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -79,6 +82,9 @@ async function initApp() {
 
     // Initialiser le système de stockage utilisateur
     initStorageManager();
+
+    // Initialiser le gestionnaire de thèmes
+    initThemeManager(window.storageManager);
 
     // Initialiser les préférences utilisateur
     initUserPreferences(window.storageManager);

@@ -151,6 +151,18 @@
   --theme-shadow: rgba(0, 166, 81, 0.1);
 }
 
+/* Thème sepia */
+[data-theme="sepia"] {
+  --theme-bg: #f4ecd8;
+  --theme-text: #5c4b37;
+  --theme-card: #faf7f0;
+  --theme-primary: #8b4513;
+  --theme-secondary: #a0522d;
+  --theme-accent: #daa520;
+  --theme-border: #e6dcc9;
+  --theme-shadow: rgba(139, 69, 19, 0.1);
+}
+
 /* Thème automatique basé sur les préférences système */
 @media (prefers-color-scheme: dark) {
   [data-theme="auto"] {
