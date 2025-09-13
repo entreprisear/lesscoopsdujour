@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Les Scoops du Jour</title>
+    <meta name="description" content="Dashboard d'administration - Les Scoops du Jour">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../public/bundle.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- Chart.js pour les graphiques -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- TinyMCE pour l'éditeur WYSIWYG -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <!-- Header Admin -->
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <div class="admin-logo">
+                <h1>🛠️ Administration</h1>
+                <span>Les Scoops du Jour</span>
+            </div>
+
+            <div class="admin-header-actions">
+                <div class="admin-notifications">
+                    <button class="notification-btn" id="notification-btn">
+                        🔔 <span class="notification-badge" id="notification-count">3</span>
+                    </button>
+                </div>
+
+                <div class="admin-user">
+                    <span>Admin</span>
+                    <button class="logout-btn" id="logout-btn">Déconnexion</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-dashboard">
+        <!-- Sidebar Navigation -->
+        <nav class="admin-sidebar">
+            <ul class="admin-nav">
+                <li class="admin-nav-item active" data-section="overview">
+                    <a href="#overview">
+                        📊 Vue d'ensemble
+                    </a>
+                </li>
+                <li class="admin-nav-item" data-section="articles">
+                    <a href="#articles">
+                        📝 Gestion articles
+                    </a>
+                </li>
+                <li class="admin-nav-item" data-section="users">
+                    <a href="#users">
+                        👥 Utilisateurs
+                    </a>
+                </li>
+                <li class="admin-nav-item" data-section="forum">
+                    <a href="#forum">
+                        💬 Modération forum
+                    </a>
+                </li>
+                <li class="admin-nav-item" data-section="analytics">
+                    <a href="#analytics">
+                        📈 Analytics
+                    </a>
+                </li>
+                <li class="admin-nav-item" data-section="settings">
+                    <a href="#settings">
+                        ⚙️ Paramètres
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Quick Stats Sidebar -->
+            <div class="admin-sidebar-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Articles aujourd'hui</span>
+                    <span class="stat-value" id="today-articles">12</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Visiteurs actifs</span>
+                    <span class="stat-value" id="active-users">1,247</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Commentaires en attente</span>
+                    <span class="stat-value" id="pending-comments">8</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Vue d'ensemble -->
+            <section id="overview" class="admin-section active">
+                <div class="admin-section-header">
+                    <h2>Vue d'ensemble</h2>
+                    <div class="admin-actions">
+                        <button class="btn btn-primary" id="refresh-data">Actualiser</button>
+                    </div>
+                </div>
+
+                <!-- Statistiques principales -->
+                <div class="admin-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-content">
+                            <h3 id="total-views">45,231</h3>
+                            <p>Pages vues (30 jours)</p>
+                            <span class="stat-change positive">+12.5%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👤</div>
+                        <div class="stat-content">
+                            <h3 id="unique-visitors">8,942</h3>
+                            <p>Visiteurs uniques</p>
+                            <span class="stat-change positive">+8.2%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-content">
+                            <h3 id="total-articles">156</h3>
+                            <p>Articles publiés</p>
+                            <span class="stat-change positive">+5</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-content">
+                            <h3 id="total-comments">1,203</h3>
+                            <p>Commentaires</p>
+                            <span class="stat-change positive">+15.3%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphiques -->
+                <div class="admin-charts-grid">
+                    <div class="chart-card">
+                        <h3>Visiteurs par jour (7 derniers jours)</h3>
+                        <canvas id="visitors-chart"></canvas>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Articles populaires</h3>
+                        <canvas id="popular-articles-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Activité récente -->
+                <div class="admin-recent-activity">
+                    <h3>Activité récente</h3>
+                    <div class="activity-list" id="recent-activity">
+                        <!-- Activités chargées dynamiquement -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gestion articles -->
+            <section id="articles" class="admin-section">
+                <div class="admin-section-header">
+                    <h2>Gestion des articles</h2>
+                    <div class="admin-actions">
+                        <button class="btn btn-primary" id="new-article-btn">Nouvel article</button>
+                        <button class="btn btn-secondary" id="import-articles">Importer</button>
+                    </div>
+                </div>
+
+                <!-- Filtres et recherche -->
+                <div class="admin-filters">
+                    <div class="filter-group">
+                        <input type="text" placeholder="Rechercher..." id="article-search">
+                        <select id="article-status">
+                            <option value="all">Tous les statuts</option>
+                            <option value="published">Publié</option>
+                            <option value="draft">Brouillon</option>
+                            <option value="scheduled">Planifié</option>
+                        </select>
+                        <select id="article-category">
+                            <option value="all">Toutes catégories</option>
+                            <option value="politique">Politique</option>
+                            <option value="economie">Économie</option>
+                            <option value="sport">Sport</option>
+                            <option value="culture">Culture</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Liste des articles -->
+                <div class="admin-table-container">
+                    <table class="admin-table" id="articles-table">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Auteur</th>
+                                <th>Catégorie</th>
+                                <th>Statut</th>
+                                <th>Vues</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articles-tbody">
+                            <!-- Articles chargés dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="admin-pagination" id="articles-pagination">
+                    <!-- Pagination générée dynamiquement -->
+                </div>
+            </section>
+
+            <!-- Éditeur d'article -->
+            <div id="article-editor" class="admin-modal">
+                <div class="admin-modal-content">
+                    <div class="admin-modal-header">
+                        <h3 id="editor-title">Nouvel article</h3>
+                        <button class="admin-modal-close" id="editor-close">×</button>
+                    </div>
+
+                    <form id="article-form" class="admin-form">
+                        <div class="form-group">
+                            <label for="article-title">Titre</label>
+                            <input type="text" id="article-title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="article-category">Catégorie</label>
+                            <select id="article-category" required>
+                                <option value="">Sélectionner une catégorie</option>
+                                <option value="politique">Politique</option>
+                                <option value="economie">Économie</option>
+                                <option value="sport">Sport</option>
+                                <option value="culture">Culture</option>
+                                <option value="tech">Tech</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="article-image">Image principale</label>
+                            <input type="file" id="article-image" accept="image/*">
+                            <div id="image-preview"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="article-content">Contenu</label>
+                            <textarea id="article-content"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="article-tags">Tags (séparés par des virgules)</label>
+                            <input type="text" id="article-tags" placeholder="politique, bénin, gouvernement">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="article-status">Statut</label>
+                            <select id="article-status">
+                                <option value="draft">Brouillon</option>
+                                <option value="published">Publier maintenant</option>
+                                <option value="scheduled">Planifier</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="schedule-group" style="display: none;">
+                            <label for="article-schedule">Date de publication</label>
+                            <input type="datetime-local" id="article-schedule">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="save-draft">Sauvegarder brouillon</button>
+                            <button type="submit" class="btn btn-primary" id="publish-article">Publier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Utilisateurs -->
+            <section id="users" class="admin-section">
+                <div class="admin-section-header">
+                    <h2>Gestion des utilisateurs</h2>
+                    <div class="admin-actions">
+                        <button class="btn btn-primary" id="add-user-btn">Ajouter utilisateur</button>
+                    </div>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-table" id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Utilisateur</th>
+                                <th>Email</th>
+                                <th>Rôle</th>
+                                <th>Dernière activité</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <!-- Utilisateurs chargés dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Modération forum -->
+            <section id="forum" class="admin-section">
+                <div class="admin-section-header">
+                    <h2>Modération forum</h2>
+                </div>
+
+                <!-- File d'attente de modération -->
+                <div class="moderation-queue">
+                    <h3>En attente de modération</h3>
+                    <div class="moderation-list" id="moderation-queue">
+                        <!-- Messages en attente -->
+                    </div>
+                </div>
+
+                <!-- Signalements -->
+                <div class="reports-section">
+                    <h3>Signalements</h3>
+                    <div class="reports-list" id="reports-list">
+                        <!-- Signalements -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics -->
+            <section id="analytics" class="admin-section">
+                <div class="admin-section-header">
+                    <h2>Analytics détaillés</h2>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Trafic par source</h3>
+                        <canvas id="traffic-sources-chart"></canvas>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Engagement par catégorie</h3>
+                        <canvas id="category-engagement-chart"></canvas>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Performance des articles</h3>
+                        <div class="performance-metrics" id="performance-metrics">
+                            <!-- Métriques chargées dynamiquement -->
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Temps de session moyen</h3>
+                        <canvas id="session-duration-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Paramètres -->
+            <section id="settings" class="admin-section">
+                <div class="admin-section-header">
+                    <h2>Paramètres système</h2>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Paramètres généraux</h3>
+                        <form class="settings-form" id="general-settings">
+                            <div class="form-group">
+                                <label for="site-title">Titre du site</label>
+                                <input type="text" id="site-title" value="Les Scoops du Jour">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="site-description">Description</label>
+                                <textarea id="site-description">Votre source d'informations fiable sur l'actualité béninoise</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="admin-email">Email administrateur</label>
+                                <input type="email" id="admin-email" value="admin@lesscoopsdujour.com">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Modération automatique</h3>
+                        <form class="settings-form" id="moderation-settings">
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="auto-moderate" checked>
+                                    Modération automatique des commentaires
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="spam-filter" checked>
+                                    Filtre anti-spam
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="max-comments">Commentaires max par heure</label>
+                                <input type="number" id="max-comments" value="10">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../public/bundle.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
