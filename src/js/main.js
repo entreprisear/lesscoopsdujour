@@ -52,6 +52,14 @@ import { initOpenGraphManager } from './utils/OpenGraphManager.js';
 // Importer le gestionnaire de thèmes
 import { initThemeManager } from './utils/ThemeManager.js';
 
+// Importer le système de recommandations
+import { initRecommendationSystem } from './utils/RecommendationEngine.js';
+import { initBehaviorTracker } from './utils/BehaviorTracker.js';
+import { initRecommendationWidget } from './components/RecommendationWidget.js';
+
+// Importer le générateur de contenu béninois
+import { initBenineseContentGenerator } from './utils/BenineseContentGenerator.js';
+
 // État de l'application
 let currentPage = 1;
 let currentCategory = 'all';
@@ -85,6 +93,11 @@ async function initApp() {
 
     // Initialiser le gestionnaire de thèmes
     initThemeManager(window.storageManager);
+
+    // Initialiser le système de recommandations
+    initRecommendationSystem();
+    initBehaviorTracker(window.storageManager);
+    initBenineseContentGenerator();
 
     // Initialiser les préférences utilisateur
     initUserPreferences(window.storageManager);
@@ -792,6 +805,7 @@ function initHomePageFeatures() {
   initLazyLoading();
   initPerformanceOptimizations();
   initArticleCards();
+  initRecommendationsWidget();
 }
 
 // Initialize ArticleCard components for hero and sidebar
@@ -872,6 +886,51 @@ function initArticleCards() {
       });
       popularContainer.appendChild(card.render());
     });
+  }
+}
+
+// Initialize Recommendations Widget
+function initRecommendationsWidget() {
+  const recommendationsContainer = document.getElementById('recommendations-widget');
+  if (!recommendationsContainer) {
+    console.warn('Container de recommandations non trouvé');
+    return;
+  }
+
+  // Vérifier que les systèmes de recommandations sont disponibles
+  if (!window.recommendationEngine || !window.behaviorTracker) {
+    console.warn('Systèmes de recommandations non initialisés');
+    recommendationsContainer.innerHTML = `
+      <div class="recommendations-error">
+        <div class="error-icon">⚠️</div>
+        <p>Système de recommandations en cours d'initialisation...</p>
+      </div>
+    `;
+    return;
+  }
+
+  try {
+    // Créer le widget de recommandations
+    const recommendationWidget = new window.RecommendationWidget(
+      recommendationsContainer,
+      window.recommendationEngine,
+      window.behaviorTracker
+    );
+
+    // Stocker la référence pour utilisation future
+    window.recommendationWidget = recommendationWidget;
+
+    console.log('🎯 Widget de recommandations initialisé avec succès');
+
+  } catch (error) {
+    console.error('Erreur lors de l\'initialisation du widget de recommandations:', error);
+    recommendationsContainer.innerHTML = `
+      <div class="recommendations-error">
+        <div class="error-icon">❌</div>
+        <p>Erreur lors du chargement des recommandations</p>
+        <button class="retry-btn" onclick="location.reload()">Recharger la page</button>
+      </div>
+    `;
   }
 }
 
